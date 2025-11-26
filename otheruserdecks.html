@@ -1,0 +1,108 @@
+<html>
+<head>
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="otheruserprofile.css">
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+</head>
+<body>  
+  <div class="container"> 
+  <div class="grid-container">   
+     <div class="header-container">
+            <!-- Search bar in the left -->
+      <form action="#" method="get" class="search-bar">
+        <input type="text" name="search">
+        <i class="bx bx-search"></i>    
+      </form>
+
+      <!-- Profile section on the right -->
+      <div class="profile-wrapper">
+        <div class="dp-container">
+          <img src="images/temporary profile.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+        <div class="user-info">
+          <p>@meiko</p>
+        </div>
+        <div class="dropdown">
+          <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
+            <i class="bx bx-chevron-down"></i>
+          </button>
+          <div class="dropdown-content" id="dropdownMenu">
+            <a href="signin.php">
+              <i class="bx bx-log-out"></i>
+              <span>Logout</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+ <aside class="sidebar">
+            <div class="logo">
+                <img src="images/logo.png" alt="Logo">
+            </div>
+            <nav class="menu">
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-item">
+                        <a href="sellerdashboard.php" class="menu-item">
+                            <i class="bx bx-home"></i> 
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-list-item">
+                        <a href="sellershop.php" class="menu-item">
+                            <i class="bx bx-book"></i> 
+                            <span>Decks</span>
+                        </a>
+                    </li>
+
+                    <li class="sidebar-list-item">
+                        <a href="sellerproductss.php" class="menu-item">
+                            <i class="bx bx-folder"></i> 
+                            <span>Public Decks</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="mydecks">
+                <p class="my-decks">My Decks</p>
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-item">
+                        <a href="sellerorders.php" class="menu-item">
+                            <i class="bx bx-book"></i> 
+                            <span>My Decks</span>
+                        </a>
+                    </li>
+                            <li class="sidebar-list-item">
+                        <a href="sellerorders.php" class="menu-item">
+                            <i class="bx bx-book"></i> 
+                            <span>My Decks</span>
+                        </a>
+                            </li>
+                            <li class="sidebar-list-item">
+                        <a href="sellerorders.php" class="menu-item">
+                            <i class="bx bx-book"></i> 
+                            <span>My Decks</span>
+                        </a>
+                            </li>
+                            <li class="sidebar-list-item">
+                        <a href="sellerorders.php" class="menu-item">
+                            <i class="bx bx-book"></i> 
+                            <span>My Decks</span>
+                        </a>
+                            </li>
+                </ul>
+            </nav>
+            <nav class="logout">
+                <ul class="sidebar-list">
+
+                    <li class="sidebar-list-item">
+                        <a href="sellerorders.php" class="menu-item">
+                            <i class="bx bx-log-out"></i> 
+                            <span>Logout</span>
+                        </a>
+                    </li>
+        </aside>
+    </body>
+</html>
