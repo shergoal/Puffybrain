@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--Fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">   
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--CSS-->
+<link rel="stylesheet" href="login.css">
+    <title>PuffyBrain | OTP </title>
+</head>
+<body>
+        <div class="navbar">
+    <div class="logo">
+        <img src="../images/logo.png" alt="Logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="../header/landingpage.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">FAQ</a></li>
+    </ul>
+
+    <div class="nav-actions">
+        <button class="start-btn">Start Learning</button>
+    </div>
+</div>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <h2>Verification</h2>
+        <div class="otp-wrapper">
+            <input type="text" maxlength="1" class="otp-input">
+            <input type="text" maxlength="1" class="otp-input">
+            <input type="text" maxlength="1" class="otp-input">
+            <input type="text" maxlength="1" class="otp-input">
+        </div>
+<button class="verify-btn" id="submitBtn">Submit</button>
+
+</body>
+</html>
+
+<script>
+const inputs = document.querySelectorAll(".otp-input");
+
+// Auto move & filter numbers only
+inputs.forEach((input, index) => {
+    input.addEventListener("input", () => {
+        input.value = input.value.replace(/[^0-9]/g, "");
+
+        if (input.value && index < inputs.length - 1) {
+            inputs[index + 1].focus();
+        }
+    });
+
+    input.addEventListener("keydown", (e) => {
+        if (e.key === "Backspace" && index > 0 && !input.value) {
+            inputs[index - 1].focus();
+        }
+    });
+});
+
+document.getElementById("submitBtn").addEventListener("click", function() {
+    let otp = "";
+    inputs.forEach(input => otp += input.value);
+
+    if (otp.length < 4) {
+        Swal.fire({
+        imageUrl: "../images/error.png",
+                imageWidth: 170,
+        imageHeight: 170,
+            title: "Incomplete Code",
+            text: "Please enter all 4 digits.",
+                        customClass: {
+                popup: "my-popup",
+                confirmButton: "my-confirm-btn",
+                title: "my-title",
+                htmlContainer: "my-text",
+                image: "my-img"
+            }
+        });
+        return;
+    }
+
+    Swal.fire({
+
+        
+        title: "Verified!",
+        text: "Your account has been successfully verified.",
+        imageUrl: "../images/success.png",
+        imageWidth: 170,
+        imageHeight: 170,
+        confirmButtonText: "OK",
+                    customClass: {
+                popup: "my-popup",
+                confirmButton: "my-confirm-btn",
+                title: "my-title",
+                htmlContainer: "my-text",
+                image: "my-img"
+            }
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "login.html";
+        }
+    });
+});
+</script>
