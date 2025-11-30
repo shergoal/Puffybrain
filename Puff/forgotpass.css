@@ -48,19 +48,88 @@ body {
 
 /* NAVIGATION BAR */
 .navbar {
-    width: 60%;
-    margin: 15px auto;
-    padding: 12px 40px;
+    width: 90%;
+    height: 90px;
+
+    background: rgba(54, 48, 138, 0.2);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background: #A993D8;
-    backdrop-filter: blur(6px);
-    border-radius: 20px;
+    justify-content: center; 
+
+    gap: 80px; 
+    width: 140vh;
+    margin: 70px auto;
+
+    border-radius: 50px;
+
+    position: fixed;
+    top: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999;
 }
 
+.nav-links {
+    justify-content: center; 
+    list-style: none;
+    display: flex;
+    gap: 40px;
+
+    font-family: "Jersey 15", sans-serif;
+    font-size: 25px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 500;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.nav-links a:hover {
+    transform: scale(1.06);
+    opacity: 0.75;
+}
+
+/* Click animation */
+.nav-links a:active {
+    transform: scale(0.92);
+}
+
+/* ===== ACTIONS  ===== */
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    font-family: "Jersey 15", sans-serif;
+    font-size: 25px;
+}
+
+.nav-actions .login {
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    transition: transform 0.15s ease, opacity 0.15s ease;
+}
+
+.nav-actions .login:hover {
+    transform: scale(1.06);
+    opacity: 0.75;
+}
+
+.nav-actions .login:active {
+    transform: scale(0.92);
+}
+
+
 .logo {
-    width: 45px;
+    width: 60px;
 }
 
 .logo-section {
@@ -86,7 +155,7 @@ body {
 .nav-links a {
     margin: 0 15px;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 25px;
     color: white;
     font-weight: normal;
 }
@@ -104,13 +173,31 @@ body {
     font-weight: normal;
 }
 
+/* ===== START BUTTON ===== */
 .start-btn {
-    padding: 10px 22px;
-    border-radius: 25px;
-    border: none;
+    padding: 10px 26px;
     background: white;
-    font-weight: normal;
+    color: var(--color-third);
+    border: none;
+    border-radius: 25px;
+
+    font-family: "Jersey 15", sans-serif;
+    font-size: 20px;
+
     cursor: pointer;
+
+    box-shadow: 0 4px 0 var(--color-secondary);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.start-btn:hover {
+    transform: scale(1.05);
+}
+
+.start-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--color-secondary);
 }
 
 /* BACKGROUND IMAGE */
@@ -136,8 +223,8 @@ body {
         0 20px 0 var(--color-shadow),   
         22px 20px 0 var(--color-shadow);  
 
-    position: relative;
-}
+        margin-top: 270px;
+    }
 
 .forgot-card h2 {
     font-size: 24px;
@@ -176,6 +263,21 @@ body {
     background: #f7f7f7;
 }
 
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    background: #efefef;
+    border-radius: 15px;
+}
+
+input:focus {
+    background: #e2e2e2;
+    outline: none;            
+    box-shadow: 0 0 0 3px var(--color-secondary); 
+}
+
 .submit-btn {
     width: 100%;
     padding: 12px;
@@ -190,9 +292,15 @@ body {
 
 .login-text {
     font-size: 15px;
+    text-decoration: none;
+    font-weight: normal;
 }
+
 
 .login-text a {
     color: #8a4efc;
+    text-decoration: none;
+    font-weight: normal;
+
     
 }
