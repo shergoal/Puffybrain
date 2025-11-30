@@ -1,5 +1,10 @@
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
 body { 
-    background-color: #d6d5d8; 
+    background-color: #F3EEEE; 
     font-family: 'Jersey 15', sans-serif; 
     margin: 0; 
     padding: 0;
@@ -9,7 +14,7 @@ body {
 /* TOP BAR */ 
 .container {
 display: absolute;
-  width: 100%;
+width: 100%;
 }
 
 .logo { 
@@ -18,8 +23,8 @@ display: absolute;
     gap: 10px; 
     font-size: 22px; 
     font-weight: bold; 
-    margin-bottom: 20px; /* Increased margin */ 
-    margin-left: 40px;
+    margin-bottom: 20px; 
+    margin-left: 10px;
 } 
 
 .logo img { 
@@ -28,7 +33,7 @@ display: absolute;
 } 
 
 .logo-name { 
-    color: white; /* Darker color */ 
+    color: white;  
     margin: 0; 
     padding: 0; 
 }
@@ -51,7 +56,7 @@ display: absolute;
     justify-content: space-between;
     align-items: center;
     padding: 15px 25px;
-    background: #e2dfdf;
+    background: #F3EEEE;
     border-bottom: 2px solid #E6E6E6;
     height: 70px;
 }
@@ -89,7 +94,7 @@ display: absolute;
 .profile-btn i,
 .edit-dp-btn i {
   font-size: 24px;
-  color: #333; /* or whatever color you prefer */
+  color: #333; 
 }
 .icon-separator {
   font-size: 20px;
@@ -97,21 +102,22 @@ display: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%; /* Matches the buttons' height for vertical centering */
+  height: 100%; 
 }
 .icons button{
-      background: none;
+  background: none;
   border: none;
-  color: inherit;  /* Keep text color from parent */
-  padding: 0;      /* Optional: remove default padding */
-  font: inherit;   /* Optional: use parent font */
-  cursor: pointer; /* Optional: make it look clickable */
+  color: inherit;  
+  padding: 0;      
+  font: inherit;   
+  cursor: pointer;
 }
 
 .search-wrapper {
     position: relative;
-    width: 420px;
+    width: 400px;
     max-width: 80%;
+    left: 200px;
 }
 
 .search-wrapper input {
@@ -126,7 +132,7 @@ display: absolute;
 
 .search-wrapper i {
     position: absolute;
-    right: 15px;
+    right: -50px;
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
@@ -165,7 +171,7 @@ display: absolute;
 .user-info p {
     margin: 0;
     font-size: 18px;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .dropdown {
@@ -211,7 +217,7 @@ display: absolute;
 .sidebar {
   grid-area: sidebar;
   width: 220px;
-  background: #EBD3FA;
+  background: #E3AADD;
   color: black;
   padding-top: 10px;
   font-family: "nunito", sans-serif;
@@ -349,10 +355,11 @@ margin-left: 10px;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  overflow-y: auto;
   width: 100%;
   gap: 30px;
+  overflow: hidden;
 }
+
 .profile_image {
   width: 120px;           /* ✅ Increase this value as needed */
   height: 110px;
@@ -361,6 +368,7 @@ margin-left: 10px;
   overflow: hidden;       /* ✅ If it's a container */
   display: block;         /* Remove inline gaps if needed */
 }
+
 .profile-info {
   display: flex;
   align-items: center;
@@ -395,7 +403,7 @@ main {
 
 .deck-info { 
     background: white; 
-    width: 300px; 
+    width: 350px; 
     height: 270px;
     padding: 20px; 
     border-radius: 18px; 
@@ -408,9 +416,9 @@ main {
 }
 
 .deck-top {
-    width: 340px;
+    width: 390px;
     height: 40px;
-    background: #7a66be;
+    background: #A993D8;
     border-top-left-radius: 200px;
     border-top-right-radius:  200px;
     position: absolute;
@@ -426,7 +434,7 @@ main {
   box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
-  height: 500px;
+  height: 480px;
   width: 600px;
   overflow: hidden;
   margin-top: -20px;
@@ -438,7 +446,7 @@ main {
     left: 0;              
     width: 100%;         
     height: 50px;
-    background: #7a66be;
+    background: #A993D8;
     border-top-left-radius: 200px;
     border-top-right-radius: 200px;
     display: flex;
@@ -447,14 +455,12 @@ main {
     padding-right: 40px;
 }
 
-
-/* Buttons now align properly inside */
 .add-cards,
 .practice {
   border: none;
   border-radius: 20px;
   padding: 8px 20px;
-  font-weight: 600;
+  font-weight: normal;
   cursor: pointer;
   transition: 0.3s;
   font-family: 'Jersey 15', sans-serif;
@@ -463,19 +469,22 @@ main {
 
 .add-cards {
   background: white;
-  color: #6a4fc4;
+  color: black;
+  box-shadow: 0 4px 0 #ccc;
 }
 
 .practice {
-  background: #b49ae8;
-  color: white;
+  background: #E3AADD;
+  color: black;
+  box-shadow: 0 4px 0 #cc61f0;
 }
+
 .cards-tabs {
   display: flex;
   gap: 25px;
   margin-bottom: 25px;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: normal;
 }
 
 .cards-tabs span {
@@ -500,7 +509,7 @@ main {
 }
 
 .cards p:first-child {
-  font-weight: 600;
+  font-weight: normal;
   font-size: 16px;
 }
 

@@ -127,7 +127,7 @@
                                         </div>
                                     </section> 
                                     <section class="cards-panel"> 
-                                <div class="cards-actions">
+                                    <div class="cards-actions">
                                     <button class="add-cards">Add Cards</button>
                                     <button class="practice">Practice</button>
                                 </div>
@@ -157,5 +157,19 @@
                             
                 </main> 
             </div> 
+            <script>
+                function toggleDropdown() {
+                const menu = document.getElementById("dropdownMenu");
+                menu.classList.toggle("show");
+            }
+
+                document.addEventListener("click", function(e) {
+                const dropdown = document.querySelector(".dropdown");
+    
+            if (!dropdown.contains(e.target)) {
+                document.getElementById("dropdownMenu").classList.remove("show");
+            }
+            });
+            </script>
     </body> 
 </html>
