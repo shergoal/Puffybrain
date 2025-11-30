@@ -363,3 +363,191 @@ margin-left: 10px;
 .profile-details .name {
   font-weight: bold;
 }
+/*other user profile page*/
+.other-user-decks-container{
+  width: 800px;
+  height: 300px;
+  border-radius: 30px;
+  border-color: #2f2f2f;
+  border: 2px solid #2f2f2f;
+  margin: 0 auto;
+  margin-top: 50px; 
+}
+.other-user-decks-container h1{
+  font-family: 'Qwitcher Grypen', cursive;
+  font-size: 100px;
+  font-weight: bold;
+  color: #130b0b;
+  margin: 0;
+  margin-top: -10px;
+  text-align: center;
+}
+.User-info{
+  font-family: 'Jersey 15', sans-serif;
+  font-size: 23px;
+  margin: 10px 15px 0 15px;
+  width: 100px;
+
+}
+.user-profile-info{
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  gap:10px;
+  margin-right: -100px;
+  margin-left: 100px;
+  padding: 10px;
+  text-align:inherit
+}
+.user{
+  margin: 10px 15px 0 15px;
+  width: 350px;
+  font-size: 20px;
+  font-family: 'nunito', sans-serif;
+}
+.signature{
+  font-family: 'Qwitcher Grypen', cursive;
+  font-size: 55px;
+  margin: 10px 15px 0 15px;
+  width: 100px;
+  font-weight: bold;
+}
+.id-header {
+    position: relative;       /* container for overlay */
+    height: 200px;            /* adjust as needed */
+}
+
+.dashed-line {
+    height: 1px;
+    background: repeating-linear-gradient(
+        to right,
+        #2f2f2f 0,
+        #2f2f2f 35px,
+        transparent 0px,
+        transparent 50px
+    );
+    position: absolute;
+    top:29%;                /* vertical center */
+    left: 26%;
+    width: 57%;
+    transform: translateY(-50%);
+    z-index: 1;              /* behind the profile */
+}
+
+.profile-container {
+    position: absolute;
+    top:36%;                /* vertical center over line */
+    left: 30%;               /* horizontal center */
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 220px;
+    border-radius: 30px;
+    border: 2px solid #2f2f2f;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    z-index: 2;              /* on top of dashed line */
+}
+
+.profile-picture {
+    width: 150px;
+    height: 140px;
+    border-radius: 20px;
+    border: 3px solid #2f2f2f;
+    object-fit: cover;
+    margin-top: 15px;
+}
+
+.barcode {
+    width: 100px;
+    height: 60px;
+    margin-top: -5px;
+    object-fit: contain;
+}
+/* ---------- DECK CARDS (Folder Style) ---------- */
+.decks{
+  width: 60em;
+  height: 200px; 
+  border-radius: 30px;
+  border: 2px solid #2f2f2f;
+  margin: 0 auto;
+  margin-top: -300px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin-left: 350;
+}
+.decks h2 {
+  font-family: 'jersey 15', sans-serif;
+  font-size: 30px;
+  font-weight: lighter;
+  color: #2f2f2f;
+  margin:20px 0 10px 10px;
+  text-align: start;
+}
+
+.decks-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 150px);
+  justify-content: start;
+  gap:130px;
+}
+.decks-grid > * {
+  margin: 0px;
+  padding: 0px;
+}
+.deck-card {
+  position: relative;
+  /* Light purple/blue gradient from screenshot */
+  background: linear-gradient(135deg, #ddd9f3, #c8c5ff); 
+  border-radius: 12px;
+  height: 150px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 145%;
+  margin-left: 100;
+}
+
+.deck-tab {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 30px;
+  background: #c8c5ff; 
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom-right-radius: 10px;
+}
+
+.deck-info {
+  background: #ffffff;
+  color: #333;
+  border-top: 1px solid #f0f0f0;
+  padding: 2px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+.deck-info p {
+  font-family: 'nunito', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top:1px; ;
+}
+.custom-small{
+  font-family: 'nunito', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #8b8989;
+}
