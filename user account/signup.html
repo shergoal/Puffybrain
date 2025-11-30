@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">   
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<!--CSS-->
+<link rel="stylesheet" href="login.css">
+
+    <title>PuffyBrain | SignUp </title>
+</head>
+<body>
+    <div class="navbar">
+    <div class="logo">
+        <img src="../images/logo.png" alt="Logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="../header/landingpage.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">FAQ</a></li>
+    </ul>
+
+    <div class="nav-actions">
+        <button class="start-btn">Start Learning</button>
+    </div>
+</div>
+
+    <div class="signup-container">
+        <div class="signup-card">
+            <h2>Create an Account</h2>
+
+<label>Username</label>
+<input id="username" type="text" placeholder="Enter your username" required>
+
+<label>Email</label>
+<input id="email" type="text" placeholder="Enter your email" required>
+
+
+<label>Password</label>
+<div class="password-wrapper">
+    <input id="password" type="password" placeholder="Enter your password" required>
+    <i class="fa-solid fa-eye toggle-eye" id="eyeIcon"></i>
+</div>
+
+
+
+<button class="login-btn" id="signupBtn">Sign Up</button>
+
+            <p class="terms-text">By signing up, you agree to Terms and Privacy policies</p>
+            <p class="signin-text">Already have an account? <a href="../user account/login.html">Signin</a></p>
+        </div>
+    </div>
+</body>
+</html>
+
+<script>
+document.getElementById("signupBtn").addEventListener("click", function() {
+
+    let username = document.getElementById("username").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let password = document.getElementById("password").value.trim();
+
+    // VALIDATION
+    if (!username) {
+        Swal.fire({
+            imageUrl: "../images/error.png",
+            imageWidth: 180,
+            imageHeight: 180,
+            title: "Username Required",
+            text: "Please enter your username.",
+            customClass: {
+                popup: "my-popup",
+                confirmButton: "my-confirm-btn",
+                title: "my-title",
+                htmlContainer: "my-text",
+                image: "my-img"
+            }
+        });
+        return;
+    }
+
+    if (!email) {
+        Swal.fire({
+            imageUrl: "../images/error.png",
+            imageWidth: 170,
+            imageHeight: 170,
+            title: "Email Required",
+            text: "Please enter your email.",
+            customClass: {
+                popup: "my-popup",
+                confirmButton: "my-confirm-btn",
+                title: "my-title",
+                htmlContainer: "my-text",
+                image: "my-img"
+            }
+        });
+        return;
+    }
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+if (!emailPattern.test(email)) {
+    Swal.fire({
+        imageUrl: "../images/error.png",
+        imageWidth: 170,
+        imageHeight: 170,
+        title: "Invalid Email",
+        text: "Please enter a valid email address.",
+        customClass: {
+            popup: "my-popup",
+            confirmButton: "my-confirm-btn",
+            title: "my-title",
+            htmlContainer: "my-text",
+            image: "my-img"
+        }
+    });
+    return;
+}
+
+    if (!password) {
+        Swal.fire({
+            imageUrl: "../images/error.png",
+            imageWidth: 170,
+            imageHeight: 170,
+            title: "Password Required",
+            text: "Please enter your password.",
+            customClass: {
+                popup: "my-popup",
+                confirmButton: "my-confirm-btn",
+                title: "my-title",
+                htmlContainer: "my-text",
+                image: "my-img"
+            }
+        });
+        return;
+    }
+
+    if (password.length < 12) {
+        Swal.fire({
+            imageUrl: "../images/error.png",
+            imageWidth: 170,
+            imageHeight: 170,
+            title: "Password Too Short",
+            text: "Your password must be at least 12 characters long.",
+            customClass: {
+                popup: "my-popup",
+                confirmButton: "my-confirm-btn",
+                title: "my-title",
+                htmlContainer: "my-text",
+                image: "my-img"
+            }
+        });
+        return;
+    }
+
+    // SUCCESS ALERT
+    Swal.fire({
+        title: "Sending Verification Code",
+        text: "Please check your email inbox.",
+        imageUrl: "../images/3.png",
+        imageWidth: 200,
+        imageHeight: 200,
+        customClass: {
+            popup: "my-popup",
+            confirmButton: "my-confirm-btn",
+            title: "my-title",
+            htmlContainer: "my-text",
+            image: "my-img"
+        },
+        confirmButtonText: "OK",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = "otp.html";
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

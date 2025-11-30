@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--Fonts-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">   
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+
+<!--CSS-->
+<link rel="stylesheet" href="landing.css">
+
+    <title>Welcome to PuffyBrain </title>
+</head>
+<body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="landing.css">
+
+    <title>Welcome to PuffyBrain</title>
+</>
+<body>
+<div class="navbar">
+    <div class="logo">
+        <img src="../images/logo.png" alt="Logo">
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="../header/landingpage.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">FAQ</a></li>
+    </ul>
+
+    <div class="nav-actions">
+        <button class="start-btn">Start Learning</button>
+    </div>
+</div>
+
+<!-- HERO SECTION -->
+<section class="hero">
+
+    <img src="../images/background.png" class="hero-bg">
+
+    <div class="hero-content">
+        <p class="study-secret">shhh… a study secret</p>
+
+        <h1>Your quizzes are waiting<br>let’s make your brain giggle!</h1>
+
+        <p class="sub">Let’s Puff Up Those Brain Cells!</p>
+
+        <button class="press-start">Press to Start</button>
+    </div>
+
+<div class="cloud-container">
+    <img src="../images/clouds sa landing page.png" class="cloud-img">
+</div>
+
+<!-- NEW GRADIENT FADE -->
+<div class="cloud-bottom-fade"></div>
+
+</section> <!-- end of hero -->
+
+</section>
+
+
+
+<!-- FEATURES SECTION -->
+<section class="features">
+
+    <!-- CARD 1 -->
+<div class="feature fade-in">
+        <img src="../images/card1.png" class="frame">
+        <div class="text">
+            <h2>Create your own study tools</h2>
+            <p>No more one–fits–all learning. PuffyBrain lets you design quizzes and flashcards for any subject, any topic, any time.</p>
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+<div class="feature reverse fade-in">
+        <img src="../images/card2.png" class="frame">
+        <div class="text">
+            <h2>Master through practice</h2>
+            <p>Test yourself with the tools you create. Whether it’s quick flashcards for memorization or full quizzes for deeper review, PuffyBrain helps you practice smarter and retain more.</p>
+        </div>
+    </div>
+
+    <!-- CARD 3 -->
+<div class="feature fade-in">
+        <img src="../images/card3.png" class="frame">
+        <div class="text">
+            <h2>Stay organized with decks</h2>
+            <p>Keep your study materials neatly grouped into decks. Review them anytime, anywhere—perfect for exam prep, daily practice, or brushing up on specific topics.</p>
+        </div>
+    </div>
+
+</section>
+
+
+
+<!-- LIBRARY BOTTOM -->
+<section class="library">
+    <img src="../images/background.jpg" class="library-bg">
+
+    <div class="library-content">
+        <h2>Ready to learn?</h2>
+        <button class="start-now">Start Now!</button>
+    </div>
+</section>
+
+
+
+<!-- FOOTER -->
+<footer>
+    <div class="links">
+        <a href="#">About Us</a>
+        <a href="#">Terms and Conditions</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <p>© 2025 — PuffyBrain. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
+<script>
+    const elements = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');   // fade in
+            } else {
+                entry.target.classList.remove('show'); // reset when leaving viewport
+            }
+
+        });
+    }, {
+        threshold: 0.15
+    });
+
+    elements.forEach(el => observer.observe(el));
+</script>
