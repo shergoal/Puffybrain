@@ -1,0 +1,103 @@
+body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  min-height: 100vh;
+}
+
+.header-box {
+    width: 70%;               
+    margin: 60px auto 0;      
+    background: #e9caff;
+    border-radius: 40px;      
+    padding: 20px 30px;
+    text-align: center;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+}
+
+    
+.title {
+    font-family: 'Jersey 15', sans-serif;
+    font-size: 60px;          
+    margin-bottom: 15px;
+}
+
+.subtitle {
+    font-family: 'Lato', sans-serif;
+    font-size: 20px;          
+    margin-bottom: 25px;
+}
+
+.start-btn {
+    padding: 15px 35px;       
+    font-size: 18px;
+    background-color: #e6b3ff;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: 'Lato', sans-serif;
+}
+
+.start-btn:hover {
+    background-color: #d191ff;
+}
+
+.question-box {
+    width: 70%;
+    margin: 40px auto;
+    background: #f7f7f7;       
+    border-radius: 30px;
+    padding: 40px 30px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.question {
+    font-family: 'Lato', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    padding: 15px 20px;
+    border: 0.5px solid #3b82f6;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; 
+    align-items: center;    
+    width: 100%;
+}
+
+.option-btn1,
+.option-btn2,
+.option-btn3,
+.option-btn4 {
+    padding: 15px 20px;
+    font-size: 18px;
+    border-radius: 15px;
+    border: 0.5px solid #505152;
+    background-color: #fff;
+    cursor: pointer;
+    transition: 0.3s;
+    width: 50%;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.option-btn1:hover,
+.option-btn2:hover,
+.option-btn4:hover {
+    background-color: #ffcccc;
+}
+
+.option-btn3:hover {
+    background-color: #ccffcc;
+}
