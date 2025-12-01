@@ -1,0 +1,191 @@
+/* Reset and body setup */
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background-color: #e9e9ea; 
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Background stripes */
+.paper-background {
+    background: repeating-linear-gradient(
+        to bottom,
+        #ffffff 0px,
+        #ffffff 24px,
+        #828282 25px
+    );
+    width: 100%;
+    min-height: 100vh; /* Ensure it covers full screen */
+}
+
+/* Main container */
+.main-container {
+    width: 95%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #ffffffe6;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Quiz header */
+.quiz-header .title {
+    margin: 0;
+    font-size: 2em;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Matching section */
+.matching-section {
+    padding: 30px;
+}
+
+.section-title {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #101010;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Grid setup */
+.match-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.column {
+    flex: 1 1 300px; /* Flexible column with min width */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Card styling */
+.card {
+    background-color: #ffffff;
+    padding: 18px;
+    border-radius: 8px;
+    font-size: 1em;
+    line-height: 1.4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border: 2px solid #ddd;
+}
+
+.card:hover {
+    box-shadow: 0 4px 10px rgba(106, 105, 105, 0.1);
+    border-color: #060506; 
+}
+
+.card.selected {
+    border-color: #ffb300;
+    box-shadow: 0 0 10px rgba(255, 179, 0, 0.5);
+    background-color: #fffde7;
+}
+
+.card.matched {
+    background-color: #2e7d32; 
+    color: white;
+    border-color: #1b5e20;
+    cursor: default;
+    pointer-events: none;
+    box-shadow: 0 0 10px rgba(102, 187, 106, 0.7);
+}
+
+.card.incorrect {
+    background-color: #ec7272;
+    color: white;
+    border-color: #b71c1c;
+    animation: shake 0.5s;
+}
+
+.card.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
+/* Footer buttons */
+.quiz-controls-footer {
+    padding-top: 20px;
+    margin-top: 30px;
+    border-top: 1px solid #eee;
+    text-align: center;
+}
+
+.restart-btn {
+    background-color: #0a090a;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+}
+
+.restart-btn:hover {
+    background-color: #0b0b0b; 
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Fullscreen button */
+.fullscreen-btn {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: transparent;
+    border: 2px solid rgba(0,0,0,0.08);
+    padding: 8px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #222;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen-btn i { font-size: 0.9rem; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .match-grid {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .matching-section {
+        padding: 20px 15px;
+    }
+    .card {
+        font-size: 0.95em;
+    }
+    .fullscreen-btn { top: 12px; right: 12px; padding: 6px; }
+}
