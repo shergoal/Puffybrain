@@ -1,0 +1,97 @@
+body {
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+  min-height: 100vh;
+}
+
+.result-container {
+  width: 70%;
+  margin: 50px auto;
+  text-align: center;
+}
+
+#score-container {
+  padding: 25px 30px;
+  border-radius: 30px;
+  font-family: 'Jersey 15', sans-serif;
+  font-size: 45px;
+  color: #000;
+  display: inline-block;
+  min-width: 280px;
+  margin-bottom: 20px;
+}
+
+#score-container p {
+  font-size: 20px;
+  margin-top: 8px;
+}
+
+#buttons-container {
+  margin-bottom: 30px;
+}
+
+#buttons-container button {
+  cursor: pointer;
+  border-radius: 20px;
+  padding: 12px 25px;
+  font-weight: 600;
+  font-size: 16px;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  margin: 0 10px;
+  transition: background-color 0.3s ease;
+}
+
+#buttons-container .try-again {
+  background-color: #d7b5ff;
+  color: #000;
+}
+
+#buttons-container .try-again:hover {
+  background-color: #e9caff;
+}
+
+#buttons-container .go-home {
+  background-color: white;
+  border: 2px solid #d7b5ff;
+  color: #000;
+}
+
+#buttons-container .go-home:hover {
+  background-color: #f0e5ff;
+}
+
+#review-container {
+  background-color: #e9caff;
+  border-radius: 30px;
+  padding: 30px 35px;
+  color: #000;
+  font-family: 'Lato', sans-serif;
+  text-align: left;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+}
+
+#review-container h2 {
+  font-family: 'Jersey 15', sans-serif;
+  margin-bottom: 25px;
+}
+
+.review-item {
+  background: white;
+  padding: 18px 22px;
+  margin-bottom: 18px;
+  border-radius: 15px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+  font-size: 16px;
+  color: #333;
+}
+
+.review-item strong {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
