@@ -1,3 +1,18 @@
+:root {
+    --color-primary: #EBD3FA;
+    --color-secondary: #E3AADD;
+    --color-third: #C8A8E9;
+    --color-fourth: #A993D8;
+    --color-fifth: #C3C7F3;
+    --font-color: #2F2F2F;
+    --card-color1: #C8BBD0;
+    --card-color2: #E0BBD4;
+     --card-color3: #C3C7F3;
+     --card-color4: #90F897;
+    --card-color5: #CF8686;
+     --card-color6: #EECB99;
+     --color-shadow: #DDDDDD;
+}
 
 body {
   margin: 0;
@@ -8,10 +23,6 @@ body {
      overflow: hidden; 
 }
 
-.container {
-display: absolute;
-  width: 100%;
-}
 
 .logo {
   text-align: left;
@@ -19,23 +30,29 @@ display: absolute;
   width: 91%;
   height: 80px;
   padding: 10px;
-  border-bottom: 3px solid #ffffff;;
 }
+
 .logo img {
   width: 255px;
   margin-left:-25px;
   margin-top: -10px;
 }
+
 .material-icons-outlined {
   vertical-align: middle;
   line-height: 1px;
 }
 /*header*/
-.header-container{
-    grid-area: header;
-    border: 2px solid #E6E6E6; 
+.header-container {
+    display: flex;
+    justify-content: center; /* centers the search bar */
+    align-items: center;
+    position: relative;
+      grid-area: header;
+      border: 2px solid #E6E6E6; 
 
 }
+
 .grid-container {
   display: grid;
   grid-template-columns: 220px 1fr;
@@ -67,34 +84,38 @@ display: absolute;
   cursor: pointer;
 }
 
+.user-info{
+  margin-left: 20px;
+  font-weight: normal;
+}
+
 .profile-btn i,
 .edit-dp-btn i {
   font-size: 24px;
-  color: #333; /* or whatever color you prefer */
+  color: #333; 
 }
+
 .icon-separator {
   font-size: 20px;
   color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100%; /* Matches the buttons' height for vertical centering */
+  height: 100%;
 }
-
 
 .icons button{
       background: none;
   border: none;
-  color: inherit;  /* Keep text color from parent */
-  padding: 0;      /* Optional: remove default padding */
-  font: inherit;   /* Optional: use parent font */
-  cursor: pointer; /* Optional: make it look clickable */
+  color: inherit;  
+  padding: 0;    
+  font: inherit;   
+  cursor: pointer; 
 }
 .search-bar {
   display: flex;
-  align-items: center;
   background-color: #ffffff;
-margin-left: 150px;
+  margin-right: 70px;
   border-radius: 100px;
   overflow: hidden;
   height: 30px;
@@ -102,7 +123,10 @@ margin-left: 150px;
   max-width: 600px;
   margin-top: 16px;
   border: 2px solid #C8A8E9;
+  align-items: center;
 }
+
+
 .search-bar input {
   border: none;
   background: transparent;
@@ -111,7 +135,10 @@ margin-left: 150px;
   font-size: 15px;
   outline: none;
   width: 60px;
+  color: var(--font-color);
+  font-family: "jersey 15", sans-serif;
 }
+
 .search-bar i {
   font-size: 16px;
   color: black;
@@ -123,16 +150,13 @@ margin-left: 150px;
 }
 
 .profile-wrapper {
-  position: fixed;         /* Keeps it in the top-right corner */
-  top: -1px;
+  position: fixed;        
+  top: -6px;
   right: 30px;
   display: flex;
   align-items: center;
-  gap: 20px;               /* space between profile, user-info, dropdown */
-  background-color: transparent; /* optional: background */
-  padding: 8px 12px;
   border-radius: 8px;
-  z-index: 1000;          /* make sure it's above other content */
+  z-index: 1000;         
 }
 
 .dp-container {
@@ -143,9 +167,9 @@ margin-left: 150px;
 .dp-container img {
   width: 100%;
   height: 100%;
- border-radius: 50%;     /* ✅ Makes it a circle */
-  object-fit: cover;      /* ✅ Ensures image doesn’t stretch */
-  overflow: hidden;       /* ✅ If it's a container */
+ border-radius: 50%;     
+  object-fit: cover;     
+  overflow: hidden;     
   display: block; 
   margin-top: 2px;
 
@@ -198,28 +222,33 @@ margin-left: 150px;
 .show {
   display: block;
 }
-/*sidebar*/
+
 .sidebar {
   grid-area: sidebar;
   width: 220px;
-  background: #EBD3FA;
-  color: black;
+  background: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;   
   padding-top: 10px;
-  font-family: "nunito", sans-serif;
+  font-family: 'Jersey 15', sans-serif;
+  font-weight: normal;
 }
 
 .sidebar-list {
   padding: 0;
   margin: 0;
   list-style-type: none;
-
 } 
+
 .sidebar-list span{
   font-weight: normal;
 }
+
 .sidebar-list-item{
 margin-left: 10px;
 }
+
 .sidebar-list i{
   width: 25px;
   height: 25px;
@@ -230,9 +259,6 @@ margin-left: 10px;
   color: black;
 }
 
-.menu{
-  border-bottom: 3px solid #ffffff;
-}
 .menu-title {
   font-size: 14px;
   margin-top: 1rem;
@@ -322,6 +348,7 @@ margin-left: 10px;
   background: white;
   color: #000000;
 }
+
 .user-item {
   margin-left: 5px;
   border-top-left-radius: 30px;
@@ -329,7 +356,7 @@ margin-left: 10px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   color: #246dec;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'nunito', sans-serif;
   padding-left: 25px;
 }
 
@@ -343,14 +370,16 @@ margin-left: 10px;
   width: 100%;
   gap: 30px;
 }
+
 .profile_image {
-  width: 120px;           /* ✅ Increase this value as needed */
+  width: 120px;        
   height: 110px;
-  border-radius: 50%;     /* ✅ Makes it a circle */
-  object-fit: cover;      /* ✅ Ensures image doesn’t stretch */
-  overflow: hidden;       /* ✅ If it's a container */
-  display: block;         /* Remove inline gaps if needed */
+  border-radius: 50%;     
+  object-fit: cover;     
+  overflow: hidden;       
+  display: block;         
 }
+
 .profile-info {
   display: flex;
   align-items: center;
@@ -366,114 +395,116 @@ margin-left: 10px;
 .profile-details .name {
   font-weight: bold;
 }
-/*other user profile page*/
-.other-user-decks-container{
-  width: 800px;
-  height: 300px;
-  border-radius: 30px;
-  border-color: #2f2f2f;
-  border: 2px solid #2f2f2f;
-  margin: 0 auto;
-  margin-top: 50px; 
-}
-.other-user-decks-container h1{
-  font-family: 'Qwitcher Grypen', cursive;
-  font-size: 100px;
-  font-weight: bold;
-  color: #130b0b;
-  margin: 0;
-  margin-top: -10px;
-  text-align: center;
-}
-.User-info{
-  font-family: 'Jersey 15', sans-serif;
-  font-size: 23px;
-  margin: 10px 15px 0 15px;
-  width: 100px;
 
-}
-.user-profile-info{
-  display: flex;
-  align-items: center;
-  justify-content:flex-start;
-  gap:10px;
-  margin-right: -100px;
-  margin-left: 100px;
-  padding: 10px;
-  text-align:inherit
-}
-.user{
-  margin: 10px 15px 0 15px;
-  width: 350px;
-  font-size: 20px;
-  font-family: 'nunito', sans-serif;
-}
-.signature{
-  font-family: 'Qwitcher Grypen', cursive;
-  font-size: 55px;
-  margin: 10px 15px 0 15px;
-  width: 100px;
-  font-weight: bold;
-}
-.id-header {
-    position: relative;       /* container for overlay */
-    height: 200px;            /* adjust as needed */
+/* MAIN CARD */
+.other-user-decks-container {
+    position: relative;
+    background: #fff;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    width: 500px;
+    margin: 80px auto 0 auto;
+    padding: 10px 100px 10px 40px;
+    display: block; /* FIX: prevent weird horizontal layout */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    font-family: "Jersey 15", sans-serif;
 }
 
-.dashed-line {
-    height: 1px;
-    background: repeating-linear-gradient(
-        to right,
-        #2f2f2f 0,
-        #2f2f2f 35px,
-        transparent 0px,
-        transparent 50px
-    );
-    position: absolute;
-    top:29%;                /* vertical center */
-    left: 26%;
-    width: 57%;
-    transform: translateY(-50%);
-    z-index: 1;              /* behind the profile */
-}
-
+/* PHOTO BOX */
 .profile-container {
     position: absolute;
-    top:36%;                /* vertical center over line */
-    left: 30%;               /* horizontal center */
-    transform: translate(-50%, -50%);
-    width: 200px;
-    height: 220px;
-    border-radius: 30px;
-    border: 2px solid #2f2f2f;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    z-index: 2;              /* on top of dashed line */
+    left: -100px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid #000000;
+    border-radius: 15px;
+    width: 120px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
 .profile-picture {
-    width: 150px;
-    height: 140px;
-    border-radius: 20px;
-    border: 3px solid #2f2f2f;
+    width: 100%;
+    height: 120px;
     object-fit: cover;
-    margin-top: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
 }
 
 .barcode {
-    width: 100px;
-    height: 60px;
-    margin-top: -5px;
-    object-fit: contain;
+    width: 80px;
+    height: 18px;
+    margin: 10px auto 0 auto;
+    display: block;
 }
+
+.section-title {
+    font-size: 2rem;
+    text-align: center;
+    font-weight: normal;
+    margin-bottom: 10px;
+    align-items: center;
+    margin-left: 80px;
+}
+.dashed-line {
+    width: 117%;
+    border-bottom: 2px dashed #000;
+    margin: 10px 0 5px 0;
+}
+
+/* INFO ROWS */
+
+.user-profile-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0;
+    margin-left: 70px;
+    font-size: 1.2rem;
+    padding-left: 5px;
+}
+
+
+.user-label {
+    width: 90px;         
+    font-weight: normal;
+}
+
+.signature-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;     
+    padding-left: 5px;
+    margin-top: 10px;
+    margin-left: 70px;
+}
+
+.signature-label {
+    width: 90px;    
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;     
+}
+
+.signature {
+    font-family: "Qwitcher Grypen", cursive;
+    font-size: 2.7rem;
+    font-weight: 500;
+    transform: rotate(-2deg);
+    margin: 0;      
+}
+
+
+
 /* ---------- DECK CARDS (Folder Style) ---------- */
+
 .decks{
   width: 60em;
   height: 200px; 
   border-radius: 30px;
-  border: 2px solid #2f2f2f;
+  border: 1px solid #2f2f2f;
   margin: 0 auto;
   margin-top: -260px;
   justify-content: center;
@@ -481,7 +512,9 @@ margin-left: 10px;
   flex-direction: column;
   padding: 20px;
   margin-left: 350;
+  align-items: ce;
 }
+
 .decks h2 {
   font-family: 'jersey 15', sans-serif;
   font-size: 30px;
@@ -553,4 +586,53 @@ margin-left: 10px;
   font-weight: 400;
   font-size: 12px;
   color: #8b8989;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  color: #333;
+}
+
+.dropdown-content {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  overflow: hidden;
+  min-width: 150px;
+  z-index: 999;
+}
+
+.dropdown-content a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 15px;
+  font-family: "Nunito", sans-serif;
+  color: #333;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.dropdown-content a i {
+  font-size: 18px;
+}
+
+.dropdown-content a:hover {
+  background: #f3e8ff;
+}
+
+.show {
+  display: flex;
 }
