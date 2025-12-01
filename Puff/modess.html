@@ -53,14 +53,14 @@
                 <ul class="sidebar-list">
                     <hr class="line">
                     <li class="sidebar-list-item">
-                        <a href="sellerdashboard.php" class="menu-item active">
+                        <a href="sellerdashboard.php" class="menu-item">
                             <i class="bx bx-home"></i> 
                             <span>Home</span>
                         </a>
                     </li>
 
                     <li class="sidebar-list-item">
-                        <a href="sellershop.php" class="menu-item">
+                        <a href="sellershop.php" class="menu-item active">
                             <i class="bx bx-book"></i> 
                             <span>Decks</span>
                         </a>
@@ -120,22 +120,26 @@
                                         <h3>Lesson 1 to 3 Networking</h3> 
                                         <p>37 cards</p> 
                                         <hr> 
+                                        
+                                        <div class="desc"> 
                                         <p>Description</p>
                                         <p>Focuses on how modern applications are developed and connected through networks using emerging technologies.</p> 
                                         <hr> 
-                                        <p><strong>Created by you</strong></p> 
-                                          <button class="modes">Modes</button>
+                                        </div>
+
+                                        <p>Created by you</p> 
                                         </div>
                                     </section> 
+
                                     <section class="cards-panel"> 
                                     <div class="cards-actions">
                                     <button class="add-cards">Add Cards</button>
                                     <button class="practice">Practice</button>
                                 </div>
                                 <div class="cards-tabs"> 
-                                    <span style="font-size: 25px;">All Cards</span> 
-                                    <span style="font-size: 25px;">Memorized</span> 
-                                    <span style="font-size: 25px;">Not Memorized</span> 
+                                    <span>All Cards</span> 
+                                    <span>Memorized</span> 
+                                    <span>Not Memorized</span> 
                                 </div>
                                 <div class="cards"> 
                                             <p>The function that runs only once at the beginning of Arduino</p> 
@@ -206,6 +210,18 @@
             </div>
 
         </div>
+        <div class="cards memorized">
+    <p>The function that runs only once at the beginning of Arduino</p>
+    <hr>
+    <p>setup()</p>
+</div>
+
+<div class="cards not-memorized">
+    <p>Which pin on Arduino is used for ground connection?</p>
+    <hr>
+    <p>GND</p>
+</div>
+<img src="../images/cute2.png"
     </div>
 </div>
             <script>
@@ -225,7 +241,7 @@
 
             <script>
 // OPEN modal
-document.querySelector(".modes").addEventListener("click", () => {
+document.querySelector(".practice").addEventListener("click", () => {
     document.getElementById("modesModal").style.display = "flex";
 });
 
@@ -241,6 +257,77 @@ window.addEventListener("click", (e) => {
         modal.style.display = "none";
     }
 });
+
+// TAB FILTER
+const tabs = document.querySelectorAll(".cards-tabs span");
+const cards = document.querySelectorAll(".cards-panel .cards");
+const cardsPanel = document.querySelector(".cards-panel");
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+
+        tabs.forEach(t => t.classList.remove("active-tab"));
+        tab.classList.add("active-tab");
+
+        const type = tab.textContent.trim();
+
+        if (type === "All Cards") {
+            cards.forEach(c => c.style.display = "block");
+            removeEmptyMessage();
+        } 
+        else if (type === "Memorized") {
+            filterCards("memorized", "Nothing memorized yet!", "../images/cute1.png");
+        } 
+        else if (type === "Not Memorized") {
+            filterCards("not-memorized", "No cards left to study!", "../images/cute1.png");
+        }
+    });
+});
+
+
+// *** UPDATED filterCards — now accepts imagePath ***
+function filterCards(className, emptyText, imagePath) {
+    let count = 0;
+
+    cards.forEach(card => {
+        if (card.classList.contains(className)) {
+            card.style.display = "block";
+            count++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (count === 0) {
+        showEmptyMessage(emptyText, imagePath);
+    } else {
+        removeEmptyMessage();
+    }
+}
+
+
+// *** UPDATED showEmptyMessage — now displays image ***
+function showEmptyMessage(text, imagePath) {
+    removeEmptyMessage();
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("empty-wrapper");
+
+    wrapper.innerHTML = `
+        <img src="${imagePath}" class="empty-img">
+        <p class="empty-msg">${text}</p>
+    `;
+
+    cardsPanel.appendChild(wrapper);
+}
+
+
+// REMOVE OLD MESSAGE
+function removeEmptyMessage() {
+    const old = document.querySelector(".empty-wrapper");
+    if (old) old.remove();
+}
+
 </script>
 
     </body> 

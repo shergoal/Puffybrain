@@ -5,6 +5,7 @@ body {
   box-sizing: border-box;
   background-color: #ffffff;
   color: #130b0b;
+     overflow: hidden; 
 }
 
 .container {
@@ -79,6 +80,8 @@ display: absolute;
   justify-content: center;
   height: 100%; /* Matches the buttons' height for vertical centering */
 }
+
+
 .icons button{
       background: none;
   border: none;
