@@ -1,3 +1,4 @@
+// QUIZ QUESTIONS
 const questions = [
   {
     q: "What is the primary purpose of a 'router' in a home network?",
@@ -36,21 +37,26 @@ let score = 0;
 
 loadQuestion();
 
+// LOAD QUESTION
 function loadQuestion() {
   const question = questions[current];
 
   document.getElementById("question-text").textContent = question.q;
   document.getElementById("counter").textContent = `Question ${current + 1} of ${questions.length}`;
 
+  updateProgress(current + 1, questions.length);
+
   let html = "";
   question.options.forEach((opt, i) => {
     html += `<button class="option" data-index="${i}">${opt}</button>`;
   });
+
   document.getElementById("options-container").innerHTML = html;
 
   attachEvents();
 }
 
+// ATTACH EVENTS TO OPTIONS
 function attachEvents() {
   const buttons = document.querySelectorAll(".option");
 
@@ -64,22 +70,30 @@ function attachEvents() {
       if (selectedIndex === correctIndex) {
         btn.classList.add("correct");
         score++;
-      } else {
+      } 
+
+      else {
         btn.classList.add("wrong");
-        buttons[correctIndex].classList.add("correct");
       }
 
       setTimeout(() => {
-    current++;
-    if (current < questions.length) {
-      loadQuestion();
-    } else {
-   
-      localStorage.setItem("score", score);
+        current++;
 
-      window.location.href = "result.html";
-    }
-}, 1000);
+        if (current < questions.length) {
+          loadQuestion();
+        } else {
+          localStorage.setItem("score", score);
+          window.location.href = "result.html";
+        }
+      }, 1000);
     });
   });
+}
+
+
+// PROGRESS BAR
+function updateProgress(current, total) {
+  const progress = document.getElementById("progress");
+  const percent = (current / total) * 100;
+  progress.style.width = percent + "%";
 }

@@ -3,38 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz UI</title>
+    <title>Multiple Choice Quiz</title>
     <link rel="stylesheet" href="style.css">
-
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Jersey+15&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="header-box">
-    <h1 class="title"><span class="highlight">MULTIPLE CHOICE QUIZ</span></h1>
-    <p class="subtitle">Pick the right one!</p>
-    <p class="subtitle">Select the correct answer. Don't worry if you miss - every mistake helps you learn!</p>
+<!-- HEADER -->
+<div class="header-box">
+    <div class="header-top">
+        <h1 class="title">Multiple Choice Quiz</h1>
+    </div>
+
+    <div class="subtitles">
+        <p class="subtitle">Pick the right one!</p>
+        <p class="subtitle">Select the correct answer. Don’t worry if you miss, every mistake helps you learn!</p>
+    </div>
+
     <button class="start-btn">Start</button>
-    <script>
+</div>
+
+<!-- SLIDESHOW -->
+<div class="slideshow-box">
+
+    <!-- Slide 1 -->
+    <div class="slide active">
+        <p class="question">Which keyword is used to prevent a class from being subclassed?</p>
+        <div class="options">
+            <button>static</button>
+            <button>final</button>
+            <button>const</button>
+            <button>sealed</button>
+        </div>
+    </div>
+
+    <!-- Slide 2 (correct) -->
+    <div class="slide">
+        <p class="question">Which keyword is used to prevent a class from being subclassed?</p>
+        <div class="options">
+            <button class="correct">final</button>
+            <button>static</button>
+            <button>const</button>
+            <button>sealed</button>
+        </div>
+    </div>
+
+    <!-- Slide 3 (wrong) -->
+    <div class="slide">
+        <p class="question">Which keyword is used to prevent a class from being subclassed?</p>
+        <div class="options">
+            <button>final</button>
+            <button class="wrong">static</button>
+            <button>const</button>
+            <button>sealed</button>
+        </div>
+    </div>
+
+    <!-- Dots -->
+    <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+</div>
+
+<script>
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(n) {
+    slides.forEach((slide, i) => {
+        slide.classList.toggle("active", i === n);
+        dots[i].classList.toggle("active", i === n);
+    });
+}
+
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide(index);
+}
+
+setInterval(nextSlide, 3500);
+
 document.querySelector(".start-btn").addEventListener("click", () => {
-
-    localStorage.removeItem("score");
-
     window.location.href = "quiz1.html";
 });
 </script>
-
-</div>
-
-    <div class="question-box">
-    <p class="question">Which keyword is used to prevent a class from being subclassed?</p>
-    <div class="options">
-        <button class="option-btn1">static</button>
-        <button class="option-btn2">final</button>
-        <button class="option-btn3">const</button>
-        <button class="option-btn4">sealed</button>
-    </div>
-</div>
 
 </body>
 </html>
