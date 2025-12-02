@@ -1,0 +1,19 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
+@import url("https://fonts.googleapis.com/css?family=Nunito:var(--heading-03-400-font-weight),var(--body-tine-400-font-weight),var(--body-medium-400-font-weight),var(--body-large-400-font-weight),var(--body-XXL-400-font-weight)|Jersey+15:var(--jersey-XXL-font-weight),var(--jersey-heading-03-font-weight),var(--jersey-XL-font-weight)|Rubik+Bubbles:400");
+* {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0px;
+  height: 100%;
+}
+/* a blue color as a generic focus style */
+button:focus-visible {
+  outline: 2px solid #4a90e2 !important;
+  outline: -webkit-focus-ring-color auto 5px !important;
+}
+a {
+  text-decoration: none;
+}
