@@ -1,0 +1,183 @@
+.content{
+    position: relative;
+    background-color: #EBD3FA;
+    height: 490px;
+    width: 1080px;
+    border-radius: 80px;
+    box-shadow: 15px 23px 0cap #C3C7F3;
+    padding-top: 40px;
+    overflow: hidden;
+}
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(180deg, #D39FF7 0%, #AEB6FF 100%);
+}
+.text-wrapper{
+margin-left: 50px;
+margin-top: 110px;
+}
+
+.frame-welcome{
+background-color: rgb(198, 158, 158);
+
+
+}
+@font-face {
+    font-family: 'Jersey 15';
+    src: url('fonts/Jersey15.ttf') format('truetype'); /* adjust path */
+}
+
+.tabs{
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    padding: 0 100px;
+    margin-bottom: 20px;
+    margin-top:-20px;
+}
+
+.welcomeactive{  width: 162px;
+  height: 80px;
+  border-radius: 39px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  
+  font-size: 16px;
+  text-transform: lowercase;
+  color: #ffffff;
+  background-color: rgb(200, 168, 233);
+  box-shadow: none;
+  margin-top: 11px;
+}
+
+.howitworks{
+  width: 162px;
+  height: 60px;
+  border-radius: 39px;
+  border: none;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 15px;
+  text-transform: lowercase;
+  color: #ffffff;
+  background-color: rgb(200, 168, 233);
+  box-shadow: none;
+  margin-top: 20px;
+}
+.aboutyou{
+    width: 162px;
+    height: 60px;
+    border-radius: 39px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+    text-transform: lowercase;
+    color: #ffffff;
+    background-color: rgb(200, 168, 233);
+    box-shadow: none;
+    margin-top: 20px;
+}
+
+.welcomeactive{
+    background-color: #FFFFFF;
+    color: #C486E5;
+    
+
+}
+.tutorial-box{
+background-color: rgb(198, 158, 158);
+width: 300px;
+}
+.text-wrapper-2{
+margin-left: 50px;
+margin-top: 20px;
+height: -10px;
+}
+.button{
+    background-color: #F2D1FF;
+    height: 40px;
+    width: 120px;
+    margin-top: 20px;
+    border-radius: 20px;
+    border: none;
+    box-shadow: 6px 4px 0cap rgb(200, 168, 233);
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#hello {
+  font-family:"Jersey 15", Helvetica;
+  font-size: 40px;
+  font-weight: bold;
+  color: #E3AADD;
+  margin: 0;
+}
+
+.greets {
+  background-image: url("nline.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  margin: 0 auto;
+  width: 80%;
+  height: 250px;
+  padding: 40px 60px;
+margin-top: -31px;
+  z-index: 10;
+  border-radius: 40px;
+
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  background-color: #ffffff;
+  ;
+}
+
+#greeting1 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 14px 0 24px 0;
+  width: 95%;
+}
+#backgroundgreet{
+    height: 317px;
+    width: 936px;
+    margin-top: -20px;
+    margin-left:48px;
+    border-radius: 60px;
+}
+.ribbon {
+    width: 70px;               
+    height: 120px;             
+    background: #e5a9dd;       
+    position: relative;
+    margin-top: -50px;
+    margin-left:900px;
+  }
+
+.ribbon::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+
+    /* upside-down triangle */
+    border-left: 35px solid transparent;
+    border-right: 35px solid transparent;
+    border-bottom: 40px solid #EBD3FA;  /* flipped direction */
+}
