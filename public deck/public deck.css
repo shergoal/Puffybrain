@@ -1,0 +1,283 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+}
+
+
+
+.layout {
+    display: flex;
+}
+
+
+
+.sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: linear-gradient(#e5c3ff, #dab7ff);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.logo {
+  text-align: left;
+  margin-bottom: 1rem;
+  width: 91%;
+  height: 80px;
+  padding: 10px;
+}
+
+.logo img {
+  width: 255px;
+  margin-left:-25px;
+  margin-top: -10px;
+}
+
+.menu-title {
+  font-size: 14px;
+  margin-top: 1rem;
+  margin-left: 15px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+  padding: 15px 10px;
+  margin: 10px 0;
+  border-radius: 20px 0 0 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+  margin-left: 15px;
+  background: white;
+  color: #000000;
+}
+
+.menu a.active {
+  background: white;
+  color: #000000;
+}
+.mydecks a {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 20px 0 0 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.mydecks a:hover {
+  margin-left: 15px;
+  background: white;
+  color: #000000;
+}
+
+.mydecks a.active {
+  background: white;
+  color: #000000;
+}
+.mydecks-list i{
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  font-size: 18px;
+  margin-left: 15px;
+  font-weight: normal;
+}
+.logout {
+  font-size: 17px;
+  margin-top: 7rem;
+  margin-left: 15px;
+}
+.logout a {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 20px 0 0 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.logout a {
+  display: flex;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+  padding: 5px 10px;
+  margin: 10px 0;
+  border-radius: 20px 0 0 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.logout a:hover {
+  margin-left: 15px;
+  background: white;
+  color: #000000;
+}
+
+.logout a.active {
+  background: white;
+  color: #000000;
+}
+
+
+
+
+.main {
+    flex: 1;
+    padding: 30px;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-bar {
+  display: flex;
+  background-color: #ffffff;
+  margin-right: 70px;
+  border-radius: 100px;
+  overflow: hidden;
+  height: 30px;
+  width: 431px;
+  max-width: 600px;
+  margin-top: 16px;
+  border: 2px solid #C8A8E9;
+  align-items: center;
+}
+
+
+.search-bar input {
+  border: none;
+  background: transparent;
+  padding: 0px 20px;
+  flex: 1;
+  font-size: 15px;
+  outline: none;
+  width: 60px;
+  color: var(--font-color);
+  font-family: "jersey 15", sans-serif;
+}
+
+.search-bar i {
+  font-size: 16px;
+  color: black;
+  height: 45px;
+  width: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-wrapper {
+  position: fixed;        
+  top: -6px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  z-index: 1000;         
+}
+
+
+.subject-search {
+    width: 90%;
+    margin: 20px auto;
+    background: white;
+    border: 1px solid #ddd;
+    padding: 12px 20px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.subject-search input {
+    flex: 1;
+    border: none;
+    outline: none;
+}
+
+.subject-search button {
+    background: none;
+    border: none;
+    font-size: 18px;
+}
+
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* ALWAYS 4 PER ROW */
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    cursor: pointer;
+    border-top: 35px solid #ccc;
+    transition: 0.2s ease;
+}
+
+.card h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: -10px;
+}
+
+.card p {
+    font-size: 14px;
+    color: #666;
+    margin-top: 4px;
+}
+
+/* Colors */
+.purple { border-color: #c9b1ff; }
+.red { border-color: #ffb3b3; }
+.yellow { border-color: #ffe0a8; }
+.green { border-color: #b9f7c5; }
+.blue { border-color: #ced8ff; }
+
+/* Hover */
+.card:hover {
+    transform: scale(1.03);
+}
+
+
+@media (max-width: 1100px) {
+    .cards {
+        grid-template-columns: repeat(3, 1fr); /* 3 per row */
+    }
+}
+
+@media (max-width: 850px) {
+    .cards {
+        grid-template-columns: repeat(2, 1fr); /* 2 per row */
+    }
+}
+
+@media (max-width: 550px) {
+    .cards {
+        grid-template-columns: 1fr; /* 1 per row */
+    }
+}

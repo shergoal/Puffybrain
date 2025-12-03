@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Public Decks</title>
+    <link rel="stylesheet" href="public deck.css" />
+</head>
+<body>
+
+<div class="layout">
+
+
+    <aside class="sidebar">
+
+  <div>
+      <div class="logo">
+          <img src="C:\Users\jerico\Downloads\logo.png" alt="Logo">
+      </div>
+          <p class="my-decks">Menu</p>
+
+      <nav class="menu">
+          <ul class="sidebar-list">
+              <li class="sidebar-list-item">
+                  <a href="sellerdashboard.php" class="menu-item">
+                      <i class="bx bx-home"></i>
+                      <span>Home</span>
+                  </a>
+              </li>
+
+              <li class="sidebar-list-item">
+                  <a href="sellershop.php" class="menu-item">
+                      <i class="bx bx-book"></i>
+                      <span>Decks</span>
+                  </a>
+              </li>
+
+              <li class="sidebar-list-item">
+                  <a href="sellerproductss.php" class="menu-item active">
+                      <i class="bx bx-folder"></i>
+                      <span>Public Decks</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+
+      <nav class="mydecks">
+          <p class="my-decks">My Decks</p>
+          <ul class="sidebar-list">
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>Lesson 1 to 3 Networking</span>
+                  </a>
+              </li>
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>Methods of Research 2</span>
+                  </a>
+              </li>
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>Methods of Research 3</span>
+                  </a>
+              </li>
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>Business Analysis Lesson 1</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+  </div>
+
+  <!-- Bottom logout -->
+  <nav class="logout">
+      <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+              <a href="logout.php" class="menu-item">
+                  <i class="bx bx-log-out"></i>
+                  <span>Logout</span>
+              </a>
+          </li>
+      </ul>
+  </nav>
+
+</aside>
+
+    
+    <main class="main">
+
+    
+        <button class="menu-btn" onclick="toggleSidebar()">☰</button>
+
+
+        <header class="topbar">
+            <div class="search-bar">
+                <input type="text" placeholder="Search your deck title" />
+                <button></button>
+            </div>
+            <div class="profile">@meiko</div>
+        </header>
+
+
+        <div class="subject-search">
+            <input type="text" placeholder="Type a subject to explore public decks" />
+            <button></button>
+        </div>
+
+
+        <section class="cards">
+            <div class="card purple"><h4>Network Fundamental</h4><p>17 cards</p></div>
+            <div class="card red"><h4>System Analysis And Design</h4><p>180 cards</p></div>
+            <div class="card yellow"><h4>Arduino Uno Components</h4><p>27 cards</p></div>
+            <div class="card purple"><h4>Social Engineering</h4><p>33 cards</p></div>
+            <div class="card green"><h4>Information Assurance</h4><p>18 cards</p></div>
+            <div class="card yellow"><h4>Information Security</h4><p>26 cards</p></div>
+            <div class="card purple"><h4>Introduction to Robotics</h4><p>50 cards</p></div>
+            <div class="card blue"><h4>Computer Network Topologies</h4><p>37 cards</p></div>
+            <div class="card purple"><h4>Types of Computer Networks</h4><p>29 cards</p></div>
+            <div class="card red"><h4>Emerging Technology</h4><p>41 cards</p></div>
+            <div class="card blue"><h4>System Integration</h4><p>69 cards</p></div>
+            <div class="card green"><h4>MySQL Subquery</h4><p>33 cards</p></div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('open');
+}
+</script>
+
+</body>
+</html>
