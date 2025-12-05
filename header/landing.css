@@ -1,3 +1,19 @@
+:root {
+    --color-primary: #EBD3FA;
+    --color-secondary: #E3AADD;
+    --color-third: #C8A8E9;
+    --color-fourth: #A993D8;
+    --color-fifth: #C3C7F3;
+    --font-color: #2F2F2F;
+    --card-color1: #C8BBD0;
+    --card-color2: #E0BBD4;
+     --card-color3: #C3C7F3;
+     --card-color4: #90F897;
+    --card-color5: #CF8686;
+     --card-color6: #EECB99;
+     --color-shadow: #DDDDDD;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -9,9 +25,18 @@ body {
     background: #e8d4f5;
     overflow-x: hidden;
 }
+.hero-bg{
+    width: 110%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform-origin: center;
+    transform: scale(1.3);
+    overflow: hidden;
+    margin: 0;
+}
 
-
-/* ===== NAVBAR ===== */
+/* ===== NAVBAR ===== */ 
 .navbar {
     width: 85%;
     height: 85px;
@@ -63,19 +88,30 @@ body {
     transform: scale(1.05);
 }
 
-/* START BUTTON */
 .start-btn {
     padding: 10px 26px;
     background: white;
+    color: var(--color-third);
     border: none;
     border-radius: 25px;
+
+    font-family: "Jersey 15", sans-serif;
     font-size: 20px;
+
     cursor: pointer;
-    transition: 0.2s ease;
+
+    box-shadow: 0 4px 0 var(--color-secondary);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .start-btn:hover {
-    transform: scale(1.07);
+    transform: scale(1.05);
+}
+
+.start-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--color-secondary);
 }
 
 /* HERO SECTION */
@@ -99,15 +135,11 @@ body {
     width: 110%;
     pointer-events: none;
     z-index: 5;
-
- 
+    margin-bottom: 120px;
 }
-
 .cloud-img {
     width: 100%;
     display: block;
-
-    /* ensures the bottom is inside mask area */
     margin-bottom: -5px;
 }
 
@@ -120,7 +152,7 @@ body {
 
     background: linear-gradient(
         to bottom,
-        rgba(232, 212, 245, 0) 0%,   /* fully transparent at top */
+        rgba(232, 212, 245, 0) 100%,   /* fully transparent at top */
         rgba(232, 212, 245, 1) 100% /* blends into features bg */
     );
 
@@ -165,7 +197,32 @@ body {
     border: none;
     font-size: 18px;
     cursor: pointer;
+
+    padding: 10px 26px;
+    background: white;
+    color: var(--color-third);
+    border: none;
+    border-radius: 25px;
+
+    font-family: "Jersey 15", sans-serif;
+    font-size: 20px;
+
+    cursor: pointer;
+
+    box-shadow: 0 4px 0 var(--color-secondary);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
+
+.press-start:hover {
+    transform: scale(1.05);
+}
+
+.press-start:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--color-secondary);
+}
+
 
 /* FEATURES SECTION */
 .features {
@@ -262,14 +319,30 @@ body {
 }
 
 .start-now {
-    padding: 12px 32px;
-    border-radius: 15px;
-    border: none;
+    padding: 10px 26px;
     background: white;
-    font-size: 18px;
+    color: var(--color-third);
+    border: none;
+    border-radius: 25px;
+
+    font-family: "Jersey 15", sans-serif;
+    font-size: 20px;
+
     cursor: pointer;
+
+    box-shadow: 0 4px 0 var(--color-secondary);
+
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
+.start-now :hover {
+    transform: scale(1.05);
+}
+
+.start-now :active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 var(--color-secondary);
+}
 
 /* FOOTER */
 footer {
