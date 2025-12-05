@@ -1,105 +1,107 @@
-.content{
-    position: relative;
-    background-color: #EBD3FA;
-    height: 490px;
-    width: 1080px;
-    border-radius: 80px;
-    box-shadow: 15px 23px 0cap #C3C7F3;
-    padding-top: 40px;
-    overflow: hidden;
-}
-body{
+/* Keep your gradient background */
+body {
     margin: 0;
     min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: 'Nunito', sans-serif;
+    font-family: "Jersey 15", sans-serif;
     background: linear-gradient(180deg, #D39FF7 0%, #AEB6FF 100%);
 }
-.text-wrapper{
-margin-left: 50px;
-margin-top: 110px;
+
+/* Notebook container */
+.content {
+    width: 650px;
+    background: #e7d4fb;
+    border-radius: 25px;
+    padding-top: 60px;
+    padding-bottom: 40px;
+    position: relative;
+    box-shadow: 10px 10px 0 #c9c8f8;
+    overflow: hidden;
 }
 
-.frame-welcome{
-background-color: rgb(198, 158, 158);
-
-
-}
-@font-face {
-    font-family: 'Jersey 15';
-    src: url('fonts/Jersey15.ttf') format('truetype'); /* adjust path */
-}
-
-.tabs{
+/* Tabs */
+.tabs {
+    position: absolute;
+    top: 15px;
+    left: 40px;
     display: flex;
     gap: 20px;
-    justify-content: flex-start;
-    padding: 0 100px;
-    margin-bottom: 20px;
-    margin-top:-20px;
 }
 
-.howitworksactive{  width: 162px;
-  height: 80px;
-  border-radius: 39px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  
-  font-size: 16px;
-  text-transform: lowercase;
-  color: #ffffff;
-  background-color: rgb(200, 168, 233);
-  box-shadow: none;
-  margin-top: 11px;
-}
-
-.welcome{
-  width: 162px;
-  height: 60px;
-  border-radius: 39px;
-  border: none;
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 15px;
-  text-transform: lowercase;
-  color: #ffffff;
-  background-color: rgb(200, 168, 233);
-  box-shadow: none;
-  margin-top: 20px;
-}
-.aboutyou{
-    width: 162px;
-    height: 60px;
-    border-radius: 39px;
+/* Each tab */
+.welcome,
+.aboutyou,
+.howitworksactive {
+    background: #d1b7f8;
+    padding: 10px 30px;
+    border-radius: 20px 20px 0 0;
+    font-size: 14px;
+    color: white;
     border: none;
     cursor: pointer;
-    font-weight: 700;
-    font-size: 15px;
-    text-transform: lowercase;
-    color: #ffffff;
-    background-color: rgb(200, 168, 233);
-    box-shadow: none;
-    margin-top: 20px;
+     font-family: "Jersey 15", sans-serif;
+
+        font-size: 14px;
 }
 
-.howitworksactive{
-    background-color: #FFFFFF;
-    color: #C486E5;
-    
+/* Active tab style (matches .tab.active in sample) */
+.howitworksactive {
+    background: repeating-linear-gradient(
+        white,
+        white 30px,
+        #e4e4e4 31px
+    );
+    color: black;
+    transform: translateY(-8px);
+}
 
+/* Bookmark ribbon */
+.ribbon {
+    position: absolute;
+    right: 40px;
+    top: 0;
+    width: 30px;
+    height: 85px;
+    background: #d48bda;
+    border-radius: 0 0 5px 5px;
+    clip-path: polygon(0 0, 100% 0, 100% 65%, 50% 100%, 0 65%);
 }
-.tutorial-box{
-background-color: rgb(198, 158, 158);
-width: 300px;
+
+/* Notebook page (your greets box) */
+.greets {
+    background: repeating-linear-gradient(
+        white,
+        white 30px,
+        #e4e4e4 31px
+    );
+    width:80%;
+    margin: auto;
+    padding: 40px 40px;
+    border-radius: 25px;
+
+    display: flex;
+    flex-direction: column;
+    text-align: left;
 }
-.text-wrapper-2{
-margin-left: 50px;
-margin-top: 20px;
-height: -10px;
+
+/* Heading on page */
+#hello {
+    font-family: "Jersey 15";
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #c486e5;
 }
+
+/* Text paragraph */
+#greeting1 {
+    font-size: 16px;
+    width: 90%;
+    line-height: 1.4;
+}
+
+/* Button – notebook style */
 .button{
     background-color: #F2D1FF;
     height: 40px;
@@ -113,71 +115,18 @@ height: -10px;
     cursor: pointer;
 }
 
-#hello {
-  font-family:"Jersey 15", Helvetica;
-  font-size: 40px;
-  font-weight: bold;
-  color: #E3AADD;
-  margin: 0;
+
+.button:hover {
+    transform: scale(1.07);
+    background-color: #a478d8;
 }
 
-.greets {
-  background-image: url("nline.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  margin: 0 auto;
-  width: 80%;
-  height: 250px;
-  padding: 40px 60px;
-margin-top: -31px;
-  z-index: 10;
-  border-radius: 40px;
-
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  text-align: left;
-  background-color: #ffffff;
-  ;
-}
-
-#greeting1 {
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 14px 0 24px 0;
-  width: 95%;
-}
-#backgroundgreet{
-    height: 317px;
-    width: 936px;
-    margin-top: -20px;
-    margin-left:48px;
-    border-radius: 60px;
-}
-.ribbon {
-    width: 70px;               
-    height: 120px;             
-    background: #e5a9dd;       
-    position: relative;
-    margin-top: -50px;
-    margin-left:900px;
-  }
-
-.ribbon::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-
-    /* upside-down triangle */
-    border-left: 35px solid transparent;
-    border-right: 35px solid transparent;
-    border-bottom: 40px solid #EBD3FA;  /* flipped direction */
+/* Unused or adjusted */
+.text-wrapper,
+.text-wrapper-2,
+.frame-welcome,
+.tutorial-box,
+#backgroundgreet {
+    /* retain structure but neutralized */
+    background: transparent;
 }

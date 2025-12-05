@@ -1,12 +1,13 @@
 body {
-    background-color: #f6f6fc;
-    font-family: "Jersey 15", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Jersey 15", sans-serif;
+    background: linear-gradient(180deg, #D39FF7 0%, #AEB6FF 100%);
 }
+
 .notebook {
     width: 650px;
     background: #e7d4fb;
