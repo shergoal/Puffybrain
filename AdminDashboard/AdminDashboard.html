@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>PuffyBrain — Dashboard</title>
+  <link rel="stylesheet" href="AdminDashboard.css" />
+</head>
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <img class="mascot" src="Logo.png" alt="mascot" />
+        <span class="brand-name">PuffyBrain</span>
+      </div>
+
+      <nav class="side-menu">
+        <a class="menu-item active">
+            <img class="dot" src="Home-Icon.png"/>Dashboard
+        </a>
+        <a class="menu-item">
+            <img class="dot" src="UserManagement-Icon.png"/>User Management
+        </a>
+        <a class="menu-item">
+            <img class="dot" src="UserManagement-Icon.png"/>Quiz Management
+        </a>
+      </nav>
+
+      <div class="side-bottom">
+        <a class="logout">⟲ Log-out</a>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="search-wrap">
+          <input id="searchInput" placeholder="Search" />
+        </div>
+        <div class="top-right">
+          <div class="avatar"></div>
+          <div class="admin-text">@admin</div>
+        </div>
+      </header>
+
+      <section class="content">
+        <h1 class="page-title">Dashboard</h1>
+
+        <!-- Stats -->
+        <div class="stats-row">
+          <div class="stat-card">
+            <div class="stat-left">
+            <div class="stat-meta">Total User</div>
+            <div class="stat-value" data-count="1000">0</div>
+            <div   div class="stat-foot"><span class="arrow up">▲</span> 8.5% Up from yesterday</div>
+        </div>
+            <img class="stat-icon" src="User-Icon.png" alt="users icon">
+        </div>
+
+          <div class="stat-card">
+            <div class="stat-left">
+            <div class="stat-meta">Total Quizzes</div>
+            <div class="stat-value" data-count="10293">0</div>
+            <div class="stat-foot"><span class="arrow up">▲</span> 1.3% Up from past week</div>
+          </div>
+            <img class="stat-icon" src="Box-Icon.png" alt="users icon">
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-left">
+            <div class="stat-meta">Recently created quizzes</div>
+            <div class="stat-value" data-count="2040">0</div>
+            <div class="stat-foot"><span class="arrow up">▲</span> 1.8% Up from yesterday</div>
+          </div>
+            <img class="stat-icon" src="Time-Icon.png" alt="users icon">
+          </div>
+        </div>
+
+        <!-- Tables row -->
+        <div class="tables-row">
+          <!-- Recent Quizzes -->
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Recent Created Quiz</h3>
+              <a href="#" class="show-all">show all</a>
+            </div>
+
+            <ul class="list recent-quizzes" id="quizList">
+              <li>
+                <div class="avatar-dot purple"></div>
+                <div class="q-user">@michaeljacks</div>
+                <div class="q-title">ITEC80A</div>
+                <div class="q-count">20 cards</div>
+              </li>
+              <li>
+                <div class="avatar-dot purple"></div>
+                <div class="q-user">@takezo</div>
+                <div class="q-title">INSY55</div>
+                <div class="q-count">19 cards</div>
+              </li>
+              <li>
+                <div class="avatar-dot purple"></div>
+                <div class="q-user">@maane</div>
+                <div class="q-title">Lesson2</div>
+                <div class="q-count">5 cards</div>
+              </li>
+              <li>
+                <div class="avatar-dot purple"></div>
+                <div class="q-user">@jdrell</div>
+                <div class="q-title">AtOTP</div>
+                <div class="q-count">120 cards</div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Recent Users -->
+          <div class="panel">
+            <div class="panel-head">
+              <h3>Recent User</h3>
+              <a href="#" class="show-all">show all</a>
+            </div>
+
+            <ul class="list recent-users" id="userList">
+              <li>
+                <div class="avatar-dot green"></div>
+                <div class="u-name">@Pink</div>
+                <div class="u-status online">online</div>
+              </li>
+              <li>
+                <div class="avatar-dot green"></div>
+                <div class="u-name">@Anika</div>
+                <div class="u-status online">online</div>
+              </li>
+              <li>
+                <div class="avatar-dot red"></div>
+                <div class="u-name">@Raffy</div>
+                <div class="u-status offline">offline</div>
+              </li>
+              <li>
+                <div class="avatar-dot green"></div>
+                <div class="u-name">@meiko</div>
+                <div class="u-status online">online</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="AdminDashboard.js"></script>
+</body>
+</html>

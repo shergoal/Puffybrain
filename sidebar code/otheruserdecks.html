@@ -13,125 +13,153 @@
 <body>  
   <div class="container"> 
   <div class="grid-container">   
-     <div class="header-container">
-            <!-- Search bar in the left -->
-      <form action="#" method="get" class="search-bar">
-        <input type="text" name="search">
+<div class="header-container">
+    <!-- Search bar in the left -->
+    <form action="#" method="get" class="search-bar">
+        <input type="text" name="search" placeholder="Search your decks">
         <i class="bx bx-search"></i>    
-      </form>
+    </form>
+
 
       <!-- Profile section on the right -->
       <div class="profile-wrapper">
+
         <div class="dp-container">
           <img src="images/temporary profile.jpg" alt="Profile Picture" class="profile-pic">
         </div>
+
         <div class="user-info">
-          <p>@meiko</p>
+          <p style="font-size: 20px; font-weight: normal; ">@meiko</p>
         </div>
-        <div class="dropdown">
-          <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
-            <i class="bx bx-chevron-down"></i>
-          </button>
-          <div class="dropdown-content" id="dropdownMenu">
-            <a href="signin.php">
-              <i class="bx bx-log-out"></i>
-              <span>Logout</span>
-            </a>
-          </div>
-        </div>
+
+<div class="dropdown">
+  <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
+    <i class="bx bx-chevron-down"></i>
+  </button>
+
+  <div class="dropdown-content" id="dropdownMenu">
+    <a href="#">
+      <i class="bx bx-cog"></i>
+      <span>Settings</span>
+    </a>
+
+    <a href="#">
+      <i class="bx bx-help-circle"></i>
+      <span>FAQs</span>
+    </a>
+
+    <a href="logout.php">
+      <i class="bx bx-log-out"></i>
+      <span>Logout</span>
+    </a>
+  </div>
+</div>
+
       </div>
     </div>
- <aside class="sidebar">
-            <div class="logo">
-                <img src="images/logo.png" alt="Logo">
-            </div>
-            <nav class="menu">
-                <ul class="sidebar-list">
-                    <li class="sidebar-list-item">
-                        <a href="sellerdashboard.php" class="menu-item">
-                            <i class="bx bx-home"></i> 
-                            <span>Home</span>
-                        </a>
-                    </li>
 
-                    <li class="sidebar-list-item">
-                        <a href="sellershop.php" class="menu-item">
-                            <i class="bx bx-book"></i> 
-                            <span>Decks</span>
-                        </a>
-                    </li>
+<aside class="sidebar">
 
-                    <li class="sidebar-list-item">
-                        <a href="sellerproductss.php" class="menu-item">
-                            <i class="bx bx-folder"></i> 
-                            <span>Public Decks</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-            <nav class="mydecks">
-                <p class="my-decks">My Decks</p>
-                <ul class="sidebar-list">
-                    <li class="sidebar-list-item">
-                        <a href="" class="menu-item">
-                            <i class="bx bx-book"></i> 
-                            <span>My Decks</span>
-                        </a>
-                    </li>
-                            <li class="sidebar-list-item">
-                        <a href="" class="menu-item">
-                            <i class="bx bx-book"></i> 
-                            <span>My Decks</span>
-                        </a>
-                            </li>
-                            <li class="sidebar-list-item">
-                        <a href="" class="menu-item">
-                            <i class="bx bx-book"></i> 
-                            <span>My Decks</span>
-                        </a>
-                            </li>
-                            <li class="sidebar-list-item">
-                        <a href="" class="menu-item">
-                            <i class="bx bx-book"></i> 
-                            <span>My Decks</span>
-                        </a>
-                            </li>
-                </ul>
-            </nav>
-            <nav class="logout">
-                <ul class="sidebar-list">
+  <div>
+      <div class="logo">
+          <img src="images/logo.png" alt="Logo">
+      </div>
+          <p class="my-decks">Menu</p>
 
-                    <li class="sidebar-list-item">
-                        <a href="" class="menu-item">
-                            <i class="bx bx-log-out"></i> 
-                            <span>Logout</span>
-                        </a>
-                    </li>
-        </aside>
+      <nav class="menu">
+          <ul class="sidebar-list">
+              <li class="sidebar-list-item">
+                  <a href="sellerdashboard.php" class="menu-item">
+                      <i class="bx bx-home"></i>
+                      <span>Home</span>
+                  </a>
+              </li>
+
+              <li class="sidebar-list-item">
+                  <a href="sellershop.php" class="menu-item">
+                      <i class="bx bx-book"></i>
+                      <span>Decks</span>
+                  </a>
+              </li>
+
+              <li class="sidebar-list-item">
+                  <a href="sellerproductss.php" class="menu-item active">
+                      <i class="bx bx-folder"></i>
+                      <span>Public Decks</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+
+      <nav class="mydecks">
+          <p class="my-decks">My Decks</p>
+          <ul class="sidebar-list">
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>My Deck 1</span>
+                  </a>
+              </li>
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>My Deck 2</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+  </div>
+
+  <!-- Bottom logout -->
+  <nav class="logout">
+      <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+              <a href="logout.php" class="menu-item">
+                  <i class="bx bx-log-out"></i>
+                  <span>Logout</span>
+              </a>
+          </li>
+      </ul>
+  </nav>
+
+</aside>
+
+
+
 <main>
     <div class="other-user-decks-container">
-        <h1 class="section-title">Student ID Card</h1>
-        <div class="dashed-line"></div>
-        <div class="user-profile-info">
-            <p class="User-info" style="font-weight: 400; margin-left:10px ;">Username:</p>
-            <p class="user">Ashh</p>
-            <p class="User-info" style="font-weight: 400;">Year: </p>
-            <p class="user">3rd Year</p>
-            </div>
-            <div class="user-profile-info">
-            <p class="User-info" style="font-weight: 400; margin-left: -29px;">School:</p>
-            <p class="user">Cavite State University Imus Campus</p>
-            </div>
-            <div class="user-profile-info">
-            <p class="User-info" style="font-weight: 400; margin-left: -1.5px;">Signature: </p>
-            <h3 class="signature">Ashh</h3>
-            </div>
-        </div>
-        </div>
+        <div class="left-info">
+            <h1 class="section-title">Student ID Card</h1>
+            <div class="dashed-line"></div>
+            
+<div class="user-profile-info">
+    <p class="user-label">Username:</p>
+    <p class="user-value">Ashh</p>
+
+    <p class="user-label" style="margin-left: 110px;">Year:</p>
+    <p class="user-value">3rd Year</p>
+</div>
+
+<div class="user-profile-info">
+    <p class="user-label">School:</p>
+    <p class="user-value">Cavite State University Imus Campus</p>
+</div>
+
+<div class="signature-row">
+    <p class="signature-label">Signature:</p>
+    <h3 class="signature">Ashh</h3>
+</div>
+
+
         <div class="profile-container">
             <img src="images/temporary profile.jpg" alt="Profile Picture" class="profile-picture">
             <img src="images/barcode.png" alt="barcode" class="barcode">
         </div>
+    </div>
+</main>
+
+
+            
        <section class="decks">
           <h2>Public Decks</h2>
         <div class="decks-grid">
@@ -151,6 +179,33 @@
           </div>
         </div>
       </section>
+
+
 </main>
+
     </body>
 </html>
+
+<script>
+function toggleDropdown() {
+    document.getElementById("dropdownMenu").classList.toggle("show");
+}
+
+// Optional: Close dropdown if user clicks outside
+window.onclick = function(event) {
+  if (!event.target.matches('.dropdown-btn') && !event.target.matches('.dropdown-btn *')) {
+    document.querySelectorAll(".dropdown-content").forEach(menu => {
+        menu.classList.remove("show");
+    });
+  }
+};
+
+const currentPage = window.location.pathname.split("/").pop();
+document.querySelectorAll(".sidebar .menu-item").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+        link.classList.add("active");
+    }
+});
+
+</script>
+

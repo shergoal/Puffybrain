@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PuffyBrain - Public Decks</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fb; 
+            min-height: 100vh;
+        }
+        .accent-bg { background-color: #f3e8ff; /}
+        .accent-text { color: #0c0c0c;  }
+        .lavender-card-bg { background-color: #f6f3fc; } 
+        
+        .card-header-red { background-color: #fecaca;  }
+        .card-header-orange { background-color: #fde68a;  }
+        .card-header-purple { background-color: #ddd6fe; }
+        .card-header-pink { background-color: #fbcfe8; / }
+        .card-header-green { background-color: #dcfce7; }
+        .card-header-blue { background-color: #bfdbfe; }
+        
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #d1d5db;
+            border-radius: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background-color: transparent;
+        }
+        .deck-detail-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+        @media (min-width: 1024px) { 
+            .deck-detail-content {
+                grid-template-columns: 2fr 3fr; 
+            }
+        }
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="flex">
+
+    <button id="mobile-menu-btn" class="fixed top-4 left-4 z-50 p-2 md:hidden bg-white rounded-lg shadow-md text-gray-700">
+        <i data-lucide="menu" class="w-6 h-6"></i>
+    </button>
+
+    <aside id="sidebar" class="fixed inset-y-0 left-0 transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out w-64 accent-bg shadow-2xl z-40 flex-shrink-0 flex flex-col">
+        
+        <div class="p-6 h-full flex flex-col justify-between custom-scrollbar overflow-y-auto">
+            
+            <div class="mb-8">
+                <img src="C:\Users\jerico\Downloads\logo.png" alt="C:\Users\jerico\Downloads\logo.png" class="h-8">
+            </div>
+
+            <div>
+                <nav class="space-y-4">
+                    <div class="space-y-1">
+                        <a href="#" class="flex items-center p-3 text-gray-700 rounded-xl hover:bg-purple-200 transition">
+                            <i data-lucide="home" class="w-5 h-5 mr-3 text-gray-600"></i>
+                            Home
+                        </a>
+                        <a href="#" class="flex items-center p-3 text-gray-700 rounded-xl hover:bg-purple-200 transition">
+                            <i data-lucide="book-open" class="w-5 h-5 mr-3 text-gray-600"></i>
+                            Decks
+                        </a>
+                        <a href="#" id="public-decks-nav" class="nav-link flex items-center p-3 rounded-xl accent-text bg-white font-semibold shadow-md transition active">
+                            <i data-lucide="users" class="w-5 h-5 mr-3 accent-text"></i>
+                            Public Decks
+                        </a>
+                    </div>
+
+                    <div class="pt-4 border-t border-purple-300/50">
+                        <h3 class="text-sm font-semibold uppercase tracking-wider text-purple-700 mb-2">My Decks</h3>
+                        <div class="space-y-1 text-sm">
+                            <a href="#" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-purple-200 transition">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Lesson 1 to 3 Networking
+                            </a>
+                            <a href="#" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-purple-200 transition">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Methods of research lesson
+                            </a>
+                            <a href="#" class="flex items-center p-2 text-gray-600 rounded-lg hover:bg-purple-200 transition">
+                                <i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Business Analysis Lesson 1
+                            </a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            
+            <div class="pt-6 border-t border-purple-300/50">
+                <a href="#" class="flex items-center p-3 text-gray-800 rounded-xl hover:bg-purple-300 transition">
+                    <i data-lucide="log-out" class="w-5 h-5 mr-3 text-gray-600"></i>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <main class="flex-grow md:ml-64 p-4 md:p-8 transition-all duration-300">
+        
+        <header class="flex items-center justify-between mb-8">
+            <div class="relative w-full max-w-md hidden md:block">
+                <i data-lucide="search" class="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400"></i>
+                <input type="text" placeholder="Search your deck title" class="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-purple-300 focus:border-purple-300 transition shadow-sm" />
+            </div>
+             <div class="md:hidden"></div>
+            
+            <div class="flex items-center space-x-3 ml-auto">
+                <span class="text-sm font-medium text-gray-600 hidden sm:block">@meiko</span>
+                <div class="w-10 h-10 bg-purple-200 rounded-full flex items-center justify-center text-purple-700 font-bold text-sm shadow-md">
+                    
+                </div>
+                <i data-lucide="chevron-down" class="w-4 h-4 text-gray-500 hidden sm:block"></i>
+            </div>
+        </header>
+
+        <div id="deck-explorer-view" class="hidden">
+            
+            <section class="bg-white p-6 md:p-8 rounded-2xl shadow-lg">
+                
+                <div class="relative w-full max-w-2xl mx-auto mb-10">
+                    <input type="text" placeholder="Type a subject to explore public decks" class="w-full px-6 py-4 border-4 border-purple-200 rounded-3xl text-lg focus:ring-4 focus:ring-purple-300 focus:border-purple-300 transition shadow-xl" />
+                    <button class="absolute right-4 top-1/2 transform -translate-y-1/2 text-purple-500 hover:text-purple-700 transition">
+                        <i data-lucide="search" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 custom-scrollbar">
+                    
+                    <div id="network-fundamental-card" onclick="showDeckDetail('network-fundamental')" class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-purple h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-black-800 mb-1 leading-tight">Network Fundamental</h4>
+                            <p class="text-xs text-gray-500">20 cards</p> <!-- Updated Card Count -->
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-red h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">System Analysis And Design</h4>
+                            <p class="text-xs text-gray-500">180 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-orange h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Arduino Uno Components</h4>
+                            <p class="text-xs text-gray-500">27 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-pink h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Social Engineering</h4>
+                            <p class="text-xs text-gray-500">33 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-green h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Information Assurance</h4>
+                            <p class="text-xs text-gray-500">18 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-orange h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Information Security</h4>
+                            <p class="text-xs text-gray-500">26 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-purple h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Introduction to Robotics</h4>
+                            <p class="text-xs text-gray-500">50 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-blue h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Computer Network Topologies</h4>
+                            <p class="text-xs text-gray-500">37 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-purple h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Types of Computer Networks</h4>
+                            <p class="text-xs text-gray-500">29 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-red h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">Emerging Technology</h4>
+                            <p class="text-xs text-gray-500">41 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-blue h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">System Integration</h4>
+                            <p class="text-xs text-gray-500">69 cards</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden transition transform hover:scale-[1.03] hover:shadow-xl cursor-pointer border border-gray-100">
+                        <div class="card-header-green h-12"></div>
+                        <div class="p-4">
+                            <h4 class="text-base font-semibold text-gray-800 mb-1 leading-tight">MySQL Subquery</h4>
+                            <p class="text-xs text-gray-500">33 cards</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+
+
+        <div id="deck-detail-view" class=""> 
+            <section class="bg-white rounded-2xl shadow-lg p-4 md:p-8">
+
+                <header class="mb-6 flex items-center justify-start space-x-4">
+                    <button onclick="showDeckExplorer()" class="text-gray-600 hover:text-purple-700 transition flex items-center space-x-1 p-2 rounded-full hover:bg-gray-100">
+                        <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                        <span class="font-medium text-sm"></span>
+                    </button>
+                </header>
+
+                <div class="deck-detail-content">
+                    
+                    <div class="lavender-card-bg rounded-2xl p-6 md:p-8 shadow-xl border-t-8 border-purple-400/50">
+                        
+                        <h3 class="text-2xl font-extrabold accent-text mb-2">Network Fundamentals</h3>
+                        <p class="text-sm text-gray-600 mb-6">20 cards</p>
+
+                        <h4 class="text-base font-semibold text-gray-800 mb-2">Description</h4>
+                        <p class="text-sm text-gray-600 leading-relaxed mb-6">
+                            encompass the basic concepts, components, and protocols that enable communication between devices in a network.
+                        </p>
+
+                        <h4 class="text-base font-semibold text-gray-800 mb-3">Created by</h4>
+                        <div class="flex items-center justify-between space-x-3">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 bg-gray-300 rounded-full flex items-center justify-center text-gray-700 font-bold text-sm shadow-inner flex-shrink-0">
+                                    
+                                </div>
+                                <p class="font-semibold text-gray-800 text-base">@ashh</p> 
+                            </div>
+                            <button class="bg-white text-purple-600 font-semibold py-2 px-4 rounded-xl border border-purple-300 hover:bg-purple-100 transition shadow-sm text-sm flex-shrink-0">
+                                View Profile
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex space-x-1 p-1 bg-gray-100 rounded-xl border border-gray-200">
+                                <button class="py-2 px-4 text-sm font-semibold text-purple-600 bg-white rounded-lg shadow-md border-b-2 border-purple-400 transition">
+                                    All Cards
+                                </button>
+                                <button class="py-2 px-4 text-sm font-medium text-gray-600 hover:text-purple-600 transition">
+                                    Not Memorized
+                                </button>
+                                <button class="py-2 px-4 text-sm font-medium text-gray-600 hover:text-purple-600 transition">
+                                    Memorized
+                                </button>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button class="bg-white text-purple-600 font-semibold py-2 px-4 rounded-xl border border-purple-400 hover:bg-purple-50 transition shadow-sm text-sm">
+                                    Add Cards
+                                </button>
+                                <button class="bg-purple-600 text-white font-bold py-2 px-6 rounded-xl hover:bg-purple-700 transition shadow-lg text-sm">
+                                    Practice
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="space-y-4 max-h-[70vh] overflow-y-auto custom-scrollbar pr-2">
+                            
+                            <div class="bg-white p-5 rounded-2xl shadow-md border border-gray-200">
+                                <p class="font-semibold text-gray-800 mb-2">
+                                    What is the primary purpose of a "router" in a home network?
+                                </p>
+                                <p class="text-sm text-gray-600 border-t pt-2 mt-2">
+                                    To forward data between different networks, such as your home network and the internet.
+                                </p>
+                            </div>
+
+                            <div class="bg-white p-5 rounded-2xl shadow-md border border-gray-200">
+                                <p class="font-semibold text-gray-800 mb-2">
+                                    Which network device is used to amplify a Wi-Fi signal to extend the coverage area of a wireless network?
+                                </p>
+                                <p class="text-sm text-gray-600 border-t pt-2 mt-2">
+                                    A Wi-Fi Repeater/Extender
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-2xl shadow-md border border-gray-200">
+                                <p class="font-semibold text-gray-800 mb-2">
+                                    What does the acronym "LAN" commonly stand for?
+                                </p>
+                                <p class="text-sm text-gray-600 border-t pt-2 mt-2">
+                                    Local Area Network
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-2xl shadow-md border border-gray-200">
+                                <p class="font-semibold text-gray-800 mb-2">
+                                    In the context of networking, what is a "protocol"?
+                                </p>
+                                <p class="text-sm text-gray-600 border-t pt-2 mt-2">
+                                    A set of rules for communication between devices.
+                                </p>
+                            </div>
+                            
+                            <div class="bg-white p-5 rounded-2xl shadow-md border border-gray-200">
+                                <p class="font-semibold text-gray-800 mb-2">
+                                    What is the main function of the 'Physical Layer' in the OSI model?
+                                </p>
+                                <p class="text-sm text-gray-600 border-t pt-2 mt-2">
+                                    Transmission and reception of raw bit streams over a physical medium.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </section>
+        </div>
+
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+
+        const sidebar = document.getElementById('sidebar');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const deckExplorerView = document.getElementById('deck-explorer-view');
+        const deckDetailView = document.getElementById('deck-detail-view');
+        const publicDecksNav = document.getElementById('public-decks-nav');
+        
+        function closeSidebarOutside(event) {
+            if (!sidebar.contains(event.target) && !mobileMenuBtn.contains(event.target) && !sidebar.classList.contains('-translate-x-full')) {
+                hideSidebar();
+            }
+        }
+        
+        function showSidebar() {
+            sidebar.classList.remove('-translate-x-full');
+            mobileMenuBtn.innerHTML = '<i data-lucide="x" class="w-6 h-6"></i>'; // Palitan ng 'X'
+            setTimeout(() => {
+                document.addEventListener('click', closeSidebarOutside, true);
+            }, 10);
+        }
+
+        function hideSidebar() {
+            sidebar.classList.add('-translate-x-full');
+            mobileMenuBtn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>'; // Palitan ng 'menu'
+            document.removeEventListener('click', closeSidebarOutside, true);
+        }
+
+        mobileMenuBtn.addEventListener('click', () => {
+            if (sidebar.classList.contains('-translate-x-full')) {
+                showSidebar();
+                lucide.createIcons();
+            } else {
+                hideSidebar();
+                lucide.createIcons();
+            }
+        });
+
+
+
+        function showDeckDetail(deckId) {
+            if (deckId === 'network-fundamental') {
+                deckExplorerView.classList.add('hidden');
+                deckDetailView.classList.remove('hidden');
+                document.querySelector('main').scrollTo(0, 0); 
+            }
+        }
+
+        function showDeckExplorer() {
+            deckDetailView.classList.add('hidden');
+            deckExplorerView.classList.remove('hidden');
+            
+            lucide.createIcons();
+            document.querySelector('main').scrollTo(0, 0); 
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            deckExplorerView.classList.add('hidden');
+            deckDetailView.classList.remove('hidden');
+            lucide.createIcons();
+        });
+
+
+    </script>
+</body>
+</html>

@@ -500,13 +500,6 @@ main {
   color: #6a4fc4;
 }
 
-.cards {
-  background: #f9f9fb;
-  border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 15px;
-  border: 1px solid #eee;
-}
 
 .cards p:first-child {
   font-weight: normal;
@@ -514,7 +507,6 @@ main {
 }
 
 .cards hr {
-  border: none;
   border-top: 1px solid #ddd;
   margin: 8px 0;
 }
@@ -523,3 +515,5 @@ main {
   font-size: 15px;
   color: #555;
 }
+
+
