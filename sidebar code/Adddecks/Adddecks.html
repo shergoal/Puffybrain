@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <title>Sample HTML Document</title> 
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="addnewdecks2.css">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <button id="openPopup">Add New Decks</button>
+  <div id="popup" class="popup">
+            <div class="header-box">
+    <div class="header-top">
+        <h1 class="title">Add Decks</h1>
+    </div>
+    <div class="subtitles">
+        <form action="#" method="get" class="subtitle-form">
+            <label for="deckinfo" class="deckinfo">Deck Title:</label>
+            <input type="text" class="decktitle" placeholder="  Enter your deck name"><br>
+            <label for="deckinfo" class="deckinfo">Description:</label>
+            <input type="text" class="decktitle" placeholder="  Enter your description deck - optional"><br>
+            <label for="deckinfo" class="deckinfo">Visibility:</label><br>
+            <div class="radio-group">
+            <input type="radio" id="public" class="value" name="visibility" value="public">
+            <label for="public" class="pubpriv">Public</label>
+            <input type="radio" id="private" class="value" name="visibility" value="private">
+            <label for="private" class="pubpriv">Private</label><br>
+            </div><br>
+            <label for="colordecks" class="deckinfo">Choose Deck Color:</label><br>
+            <div class="color-options"> 
+                <div class="color-option" style="background-color: #FF5733;"></div>
+                <input type="radio" class="button1" id="color1" name="deckcolor" value="#C8BBD0">
+                <input type="radio" class="button2" id="color2" name="deckcolor" value="#33FF57">
+                <input type="radio" class="button3" id="color2" name="deckcolor" value="#33FF57">
+                <input type="radio" class="button4" id="color2" name="deckcolor" value="#33FF57">
+                <input type="radio" class="button5" id="color2" name="deckcolor" value="#33FF57">
+                <input type="radio" class="button6" id="color2" name="deckcolor" value="#33FF57">
+            </div>
+            <br>
+            <div class="startsave-container">
+            <button id="closePopup" class="cancel-btn">Cancel</button>
+    <button class="start-btn">Start</button>
+    </div>
+            </div>
+        </form> 
+    </div>
+</div>  
+    </body>
+    <script>
+document.getElementById("openPopup").onclick = function () {
+    document.getElementById("popup").style.display = "flex";
+}
+
+document.getElementById("closePopup").onclick = function () {
+    document.getElementById("popup").style.display = "none";
+}
+</script>
+</html>
