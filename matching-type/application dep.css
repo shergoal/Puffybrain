@@ -1,0 +1,268 @@
+:root{
+  --purple-light: #f5f0f9;
+  --purple-main: #9c6cbe;
+  --green-match: #86f98a;
+  --red-match: #ffaaa3;
+  --card-bg: #ffffff;
+  --text-color: #111;
+}
+
+/* ---------- Card states with transitions ---------- */
+
+/* When selected */
+.card.selected {
+  outline: 3px solid var(--purple-main);
+  background: #f3e7ff;
+  transition: background 0.25s ease, outline 0.25s ease;
+}
+
+/* Correct match (GREEN smooth fade-in) */
+.card.correct {
+  background: var(--green-match) !important;
+  color: #000;
+  transition: background 0.5s ease, transform 0.3s ease;
+  animation: fadeIn 0.4s ease;
+}
+
+/* Wrong match (RED smooth fade) */
+.card.wrong {
+  background: var(--red-match) !important;
+  transition: background 0.4s ease;
+  animation: shake 0.3s ease;
+}
+
+/* Matched fade-out w/ smooth disappearance */
+.card.matched {
+  background: var(--green-match) !important;
+  opacity: 0.7;
+  transform: scale(0.98);
+  transition: opacity 0.5s ease, transform 0.4s ease;
+  cursor: default;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+
+/* ---------- SIDE-BY-SIDE TABLE WRAPPER ---------- */
+.matching-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-top: 30px;
+    flex-wrap: wrap; /* responsive stacking */
+}
+
+/* Table */
+table {
+    border-collapse: collapse;
+    width: 420px;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th {
+    background: #222;
+    color: white;
+    padding: 12px;
+    font-size: 18px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* ---------- Card Styling ---------- */
+.card {
+    padding: 15px;
+    border-radius: 10px;
+    background: #f7f7f7;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: 
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        background-color 0.25s ease,
+        opacity 0.4s ease;
+}
+
+/* Hover */
+.card:hover:not(.matched):not(.correct):not(.wrong) {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+
+/* ---------- Page Layout + Background ---------- */
+*{box-sizing:border-box}
+html,body{height:100%}
+
+body{
+  margin:0;
+  font-family: 'Inter', Arial, sans-serif;
+  background:#e9e9e9;
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  padding:18px;
+  color:var(--text-color);
+}
+
+/* Lined-paper background */
+.paper-background{
+  width:100%;
+  min-height:100vh;
+  background: repeating-linear-gradient(
+    to bottom,
+    #ffffff 0px,
+    #ffffff 24px,
+    #e2e2e2 25px
+  );
+  background-size:100% 25px;
+  padding:28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:18px;
+}
+
+
+/* ---------- Header ---------- */
+.site-header{
+  width:100%;
+  max-width:1200px;
+  text-align:center;
+  margin:0 auto 6px auto;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.course-title{
+  font-weight:800;
+  letter-spacing:2px;
+  font-size:28px;
+  text-align:center;
+}
+.progress-row{
+  position:relative;
+  height:12px;
+  margin:10px auto 14px;
+  width:70%;
+  max-width:900px;
+}
+.progress-track{
+  background:#e6e6e6;
+  height:10px;
+  border-radius:8px;
+}
+.progress-fill{
+  position:absolute;
+  left:0;
+  top:0;
+  height:10px;
+  background:#f4cace;
+  border-radius:8px;
+}
+.page-title{
+  padding:8px 0 20px;
+  font-size:18px;
+}
+
+
+/* ---------- Main Quiz Container ---------- */
+.quiz-app-container{
+  width:90%;
+  max-width:1100px;
+  border-radius:12px;
+  padding:10px 10px 28px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+
+/* ---------- Columns and Cards ---------- */
+.quiz-content{
+  width:100%;
+  max-width:1100px;
+  display:flex;
+  gap:40px;
+  justify-content:center;
+  padding:10px 24px;
+}
+
+.column{
+  flex:1 1 45%;
+  display:flex;
+  flex-direction:column;
+  gap:28px;
+  padding:6px 20px;
+}
+
+
+/* ---------- Controls ---------- */
+.controls{
+  margin-top:20px;
+  display:flex;
+  gap:12px;
+}
+.btn{
+  padding:10px 16px;
+  border-radius:10px;
+  background:#fff;
+  cursor:pointer;
+  box-shadow:0 6px 12px rgba(0,0,0,0.06);
+  transition:transform .15s ease;
+}
+.btn:active{ transform:translateY(1px) }
+.btn.primary{
+  background:var(--purple-main);
+  color:#fff;
+}
+
+
+/* ---------- FULL RESPONSIVE ---------- */
+
+@media (max-width:900px){
+  .quiz-content{
+    flex-direction:column;
+    gap:18px;
+    padding:8px 12px;
+  }
+  .column{
+    padding:0 6px;
+  }
+  .course-title{ font-size:22px; }
+  table{ width:100%; }
+}
+
+@media (max-width:600px){
+  .card{
+    padding:16px 20px;
+    font-size:14px;
+  }
+  .column{ gap:18px; }
+  th{ font-size:16px; }
+  .matching-wrapper{ gap:20px; }
+}
+
+@media (max-width:430px){
+  .course-title{ font-size:18px; }
+  .page-title{ font-size:15px; }
+  .card{ font-size:13px; padding:14px; }
+  table{ width:100%; }
+}

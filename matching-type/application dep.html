@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES</title>
+    <link rel="stylesheet" href="application.css">
+    <link rel="stylesheet" href="application dep.css">
+</head>
+<body>
+
+<div class="paper-background">
+    <header class="site-header">
+        <h1 class="course-title">APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES</h1>
+        <div class="progress-row">
+            <div class="progress-track"></div>
+            <div class="progress-fill" style="width:38%"></div>
+        </div>
+        <h2 class="page-title">Matching Type</h2>
+    </header>
+
+    <main class="quiz-app-container">
+        <div class="matching-wrapper">
+
+            <!-- QUESTIONS -->
+            <table>
+                <tbody>
+                    <tr><td><div class="card" data-match="1">The function that runs only once at the beginning of an Arduino program.</div></td></tr>
+                    <tr><td><div class="card" data-match="2">What is the most commonly used Arduino board for beginners?</div></td></tr>
+                    <tr><td><div class="card" data-match="3">Which pin on the Arduino is used for ground connection?</div></td></tr>
+                </tbody>
+            </table>
+
+            <!-- ANSWERS -->
+            <table>
+                <tbody>
+                    <tr><td><div class="card" data-match="1">setup()</div></td></tr>
+                    <tr><td><div class="card" data-match="2">Arduino Uno</div></td></tr>
+                    <tr><td><div class="card" data-match="3">GND</div></td></tr>
+                </tbody>
+            </table>
+
+        </div> <!-- end wrapper -->
+    </main>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const leftCards = document.querySelectorAll("table:first-of-type .card");
+  const rightCards = document.querySelectorAll("table:last-of-type .card");
+
+  let firstCard = null;
+  let lock = false;
+
+  function resetWrong(card1, card2) {
+    setTimeout(() => {
+      card1.classList.remove("selected", "wrong");
+      card2.classList.remove("selected", "wrong");
+      firstCard = null;
+      lock = false;
+    }, 700);
+  }
+
+  function markMatched(card1, card2) {
+    card1.classList.add("matched");
+    card2.classList.add("matched");
+    card1.classList.remove("selected");
+    card2.classList.remove("selected");
+    firstCard = null;
+    lock = false;
+
+    // AUTO CHECK: all matched?
+    const totalCards = document.querySelectorAll(".card").length;
+    const matchedCards = document.querySelectorAll(".card.matched").length;
+
+    if (matchedCards === totalCards) {
+        const score = matchedCards / 2; // each pair = 2 cards
+        localStorage.setItem("quizScore", score);
+
+        // Delay so user sees last match
+        setTimeout(() => {
+            window.location.href = "your_score.html";
+        }, 800);
+    }
+  }
+
+  function handleCardClick(card, side) {
+    if (lock || card.classList.contains("matched")) return;
+
+    if (!firstCard) {
+      firstCard = { element: card, side };
+      card.classList.add("selected");
+      return;
+    }
+
+    if (firstCard.side === side) return; // prevent same side selection
+
+    const first = firstCard.element;
+    card.classList.add("selected");
+
+    if (first.dataset.match === card.dataset.match) {
+      first.classList.add("correct");
+      card.classList.add("correct");
+
+      setTimeout(() => {
+        first.classList.remove("correct");
+        card.classList.remove("correct");
+        markMatched(first, card);
+      }, 500);
+
+    } else {
+      first.classList.add("wrong");
+      card.classList.add("wrong");
+      lock = true;
+      resetWrong(first, card);
+    }
+  }
+
+  leftCards.forEach(card => card.addEventListener("click", () => handleCardClick(card, "left")));
+  rightCards.forEach(card => card.addEventListener("click", () => handleCardClick(card, "right")));
+});
+</script>
+
+</body>
+</html>
