@@ -5,24 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matching Type Quiz</title>
     <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">   
+
 </head>
 <body>
 <div class="paper-background">
 
         <!-- MAIN CONTAINER -->
         <div class="container">
-            
-    <div class="quiz-app-container">
-        <div class="quiz-header">
-            <h1>Matching Type</h1>
-            <p>Find the perfect match! Pair the terms, ideas, or clues correctly, it's a fun way to test your memory and logic!</p>
-            <a href="application dep.html" class="start-button">Start </a>
-
-
-        </div>
-        
     
+    <div class="quiz-app-container">
+        <div class="quiz-header"> 
+            <h1>Matching Type</h1>
+              </div>
+      
+                <div class="subtitles">
 
+            <p>Find the perfect match! Pair the terms, ideas, or clues correctly, it's a fun way to test your memory and logic!</p>
+    <button class="start-button">Start</button>
+        </div>
+    </div>
+
+
+
+<!-- SLIDESHOW -->
+<!-- SLIDESHOW -->
+<div class="slideshow-box">
+
+    <div class="slide active">
         <div class="quiz-content">
             <div class="column left-column">
                 <div class="card" data-match="A">What are the 5 main components of an information system?</div>
@@ -36,15 +46,50 @@
                 <div class="card" data-match="A">Hardware, Software, Data, People, and Processes.</div>
             </div>
         </div>
+    </div>
 
-        <div class="pagination">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+    <!-- SLIDE 2 -->
+    <div class="slide">
+        <div class="quiz-content">
+            <div class="column left-column">
+                <div class="card" data-match="A">What are the 5 main components of an information system?</div>
+                <div class="card" data-match="B">What does CPU stand for and what is its main function?</div>
+                <div class="card" data-match="C">It is the component on the Arduino Uno that acts as its brain.</div>
+            </div>
+
+            <div class="column right-column">
+                <div class="card" data-match="B">It processes instructions and performs calculations, acting as the brain of the computer.</div>
+                <div class="card" data-match="C">The ATmega328P microcontroller.</div>
+                <div class="card" data-match="A">Hardware, Software, Data, People, and Processes.</div>
+            </div>
         </div>
     </div>
+
+    <!-- SLIDE 3 -->
+    <div class="slide">
+        <div class="quiz-content">
+            <div class="column left-column">
+                <div class="card" data-match="A">What are the 5 main components of an information system?</div>
+                <div class="card" data-match="B">What does CPU stand for and what is its main function?</div>
+                <div class="card" data-match="C">It is the component on the Arduino Uno that acts as its brain.</div>
+            </div>
+
+            <div class="column right-column">
+                <div class="card" data-match="B">It processes instructions and performs calculations, acting as the brain of the computer.</div>
+                <div class="card" data-match="C">The ATmega328P microcontroller.</div>
+                <div class="card" data-match="A">Hardware, Software, Data, People, and Processes.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DOTS -->
+    <div class="pagination">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+    </div>
+
+</div>
 
     <script src="script.js"></script>
  

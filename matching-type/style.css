@@ -6,6 +6,24 @@
     --red-match: #ffaaa3;   /* Red for incorrect match/initial selection */
     --card-bg: #ffffff;
     --text-color: #050505;
+    --color-primary: #EBD3FA;
+    --color-secondary: #E3AADD;
+    --color-third: #C8A8E9;
+    --color-fourth: #A993D8;
+    --color-fifth: #C3C7F3;
+    --font-color: #2F2F2F;
+    --card-color1: #C8BBD0;
+    --card-color2: #E0BBD4;
+     --card-color3: #C3C7F3;
+     --card-color4: #90F897;
+    --card-color5: #CF8686;
+     --card-color6: #EECB99;
+     --color-shadow: #DDDDDD;
+    --color-right: #17c723cc;
+        --color-right-border: #2AB434;
+       --color-wrong: #ff1010a1;
+       --color-wrong-border: #530909;
+
 }
 
 body {
@@ -17,6 +35,7 @@ body {
     min-height: 100vh;
     margin: 0;
 }
+
 .paper-background {
     width: 100%;
     min-height: 100vh;
@@ -39,49 +58,81 @@ body {
 }
 
 /* --- Main Layout --- */
+
 .quiz-app-container {
-    width: 80%;
-    max-width: 900px;
-    background-color: var(--purple-light);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 70%;
+    margin: 60px auto 0;
+    background: #ffffff;
+    border-radius: 40px;
+    padding: 120px 30px 40px; 
     text-align: center;
+    box-shadow: 0 8px 15px rgba(0,0,0,0.12);
+    position: relative;
 }
 
 .quiz-header {
-    background-color: var(--purple-main);
-    color: white;
-    padding: 20px 40px;
-    border-radius: 15px;
-    margin-bottom: 30px;
+    width: 100%;
+    height: 90px;
+    background: #e3c2ff;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
+
 .quiz-header h1 {
-    margin: 0;
-    font-size: 2em;
+       font-family: 'Jersey 15';
+    font-size: 45px;
+    font-weight: normal;
+    font-style: normal;
 }
 
 .quiz-header p {
     font-size: 0.9em;
     margin: 5px 0 15px;
+        margin-top: 10px;
+
 }
 
 .start-button {
-    background-color: white;
-    color: var(--purple-main);
+    margin-top: 20px;
+    width: 60%;
+    padding: 12px;
+    background-color: var(--color-primary);
     border: none;
-    padding: 10px 30px;
-    border-radius: 25px;
-    font-size: 1em;
-    font-weight: bold;
+    border-radius: 23px;
     cursor: pointer;
-    transition: background-color 0.2s, transform 0.2s;
+    font-family: "Jersey 15", sans-serif;
+    font-size: 22px;
+    box-shadow: 0 4px 0 #a45de3;
+    transition: 0.3s ease;
+    
 }
 
 .start-button:hover {
-    background-color: #eee;
-    transform: translateY(-2px);
+    transform: scale(1.05);
+}
+.start-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 #a45de3;
+}
+
+.slideshow-box {
+    width: 70%;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 40px 30px;
+    border-radius: 40px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    position: relative;
 }
 
 /* --- Matching Cards --- */
@@ -153,4 +204,21 @@ body {
 
 .dot.active {
     background-color: var(--purple-main);
+}
+
+.wrong-previous {
+ background: var(--color-wrong) !important;
+    border-color: var(--color-wrong-border) !important;
+}
+
+.matched {
+    background: var(--color-right)!important;
+    border-color: var(--color-right-border) !important;
+}
+
+.slide {
+    display: none;
+}
+.slide.active {
+    display: block;
 }

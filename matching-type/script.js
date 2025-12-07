@@ -1,82 +1,129 @@
+/* ==========================================================
+   MATCHING LOGIC
+   ========================================================== */
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card');
-    let selectedCard = null; // Stores the first selected card
+    const cards = document.querySelectorAll('.slide:first-child .card'); 
+    // Only Slide 1 is clickable
+    let selectedCard = null;
 
-    // Function to handle card click/selection
+    /* ==========================================================
+       WRONG FOR SLIDE 2
+       ========================================================== */
+    const previousWrong = localStorage.getItem("previousWrong");
+    if (previousWrong) {
+        const [a, b] = previousWrong.split("-");
+
+        // Only target Slide 2 cards
+        const slide2Cards = document.querySelectorAll(".slide:nth-child(2) .card, .slide:nth-child(2) .wrong-previous");
+
+        slide2Cards.forEach(c => {
+            if (c.dataset.match === a) {
+                c.classList.add("wrong-previous");
+            }
+        });
+    }
+
+    /* ==========================================================
+       CORRECT FOR SLIDE 3
+       ========================================================== */
+    const previousCorrect = localStorage.getItem("previousCorrect");
+    if (previousCorrect) {
+
+        // Only target Slide 3 cards
+        const slide3Cards = document.querySelectorAll(".slide:nth-child(3) .card, .slide:nth-child(3) .matched");
+
+        slide3Cards.forEach(c => {
+            if (c.dataset.match === previousCorrect) {
+                c.classList.add("matched");
+            }
+        });
+    }
+
+    /* ==========================================================
+       MATCHING LOGIC (Slide 1 only)
+       ========================================================== */
     const handleCardClick = (event) => {
         const clickedCard = event.currentTarget;
 
-        // Ignore clicks on already matched cards
-        if (clickedCard.classList.contains('matched')) {
+        if (clickedCard.classList.contains('matched') || clickedCard.classList.contains('wrong-previous')) {
             return;
         }
 
-        // 1. If no card is currently selected: Select this card.
         if (!selectedCard) {
-            // Remove 'selected' from any card in the same column (if applicable)
-            clickedCard.closest('.column').querySelectorAll('.card.selected').forEach(c => {
-                c.classList.remove('selected');
-            });
-            
+            clickedCard.closest('.column').querySelectorAll('.card.selected')
+                .forEach(c => c.classList.remove('selected'));
+
             clickedCard.classList.add('selected');
             selectedCard = clickedCard;
-        } 
-        
-        // 2. If a card is already selected: Attempt a match.
-        else {
-            // Prevent matching a card with itself, or cards in the same column
-            if (clickedCard === selectedCard || clickedCard.closest('.column') === selectedCard.closest('.column')) {
-                // If the user clicks the same card or another in the same column, just select the new one
+
+        } else {
+            if (
+                clickedCard === selectedCard ||
+                clickedCard.closest('.column') === selectedCard.closest('.column')
+            ) {
                 selectedCard.classList.remove('selected');
                 clickedCard.classList.add('selected');
                 selectedCard = clickedCard;
                 return;
             }
 
-            // Check if the cards match (based on the data-match attribute)
             const isMatch = clickedCard.dataset.match === selectedCard.dataset.match;
 
             if (isMatch) {
-                // Correct Match: Turn both green
-                clickedCard.classList.remove('selected'); // Remove selection class
+                clickedCard.classList.remove('selected');
                 selectedCard.classList.remove('selected');
-
                 clickedCard.classList.add('matched');
                 selectedCard.classList.add('matched');
 
+                // Save correct for slide 3
+                localStorage.setItem("previousCorrect", selectedCard.dataset.match);
+
             } else {
-                // Incorrect Match: Keep the selection for a moment, then reset
                 clickedCard.classList.add('selected');
-                
-                // Temporarily display the selection, then clear both
+
+                // Save wrong for slide 2
+                localStorage.setItem("previousWrong",
+                    selectedCard.dataset.match + "-" + clickedCard.dataset.match
+                );
+
                 setTimeout(() => {
                     clickedCard.classList.remove('selected');
                     selectedCard.classList.remove('selected');
-                    selectedCard = null; // Clear the selection
-                }, 800);
+                    selectedCard = null;
+                }, 700);
             }
-            
-            // Clear the selection if it was a valid attempted match
-            if (isMatch) {
-                selectedCard = null;
-            }
+
+            if (isMatch) selectedCard = null;
         }
     };
 
-    // Attach the click handler to all cards
-    cards.forEach(card => {
-        card.addEventListener('click', handleCardClick);
-    });
+    cards.forEach(card => card.addEventListener('click', handleCardClick));
 });
 
-// DOTS AUTO SWITCH (just for animation)
-let index = 0;
+
+/* ==========================================================
+   SLIDESHOW
+   ========================================================== */
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
 const dots = document.querySelectorAll(".dot");
 
+function showSlide(i) {
+    slides.forEach(slide => slide.classList.remove("active"));
+    dots.forEach(dot => dot.classList.remove("active"));
+
+    slides[i].classList.add("active");
+    dots[i].classList.add("active");
+}
+
 setInterval(() => {
-    dots.forEach(d => d.classList.remove("active"));
-    dots[index].classList.add("active");
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide(slideIndex);
+}, 2500);
 
-    index = (index + 1) % dots.length;
-}, 2000);
-
+/* ==========================================================
+   START BUTTON
+   ========================================================== */
+document.querySelector(".start-button").addEventListener("click", () => {
+    window.location.href = "application dep.html";
+});

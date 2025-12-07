@@ -12,9 +12,8 @@
 <div class="paper-background">
     <header class="site-header">
         <h1 class="course-title">APPLICATION DEVELOPMENT AND EMERGING TECHNOLOGIES</h1>
-        <div class="progress-row">
-            <div class="progress-track"></div>
-            <div class="progress-fill" style="width:38%"></div>
+                <div class="progress-container">
+    <div class="progress-bar" id="progress"></div>
         </div>
         <h2 class="page-title">Matching Type</h2>
     </header>
@@ -46,11 +45,24 @@
 
 <script>
 document.addEventListener("DOMContentLoaded", () => {
+
   const leftCards = document.querySelectorAll("table:first-of-type .card");
   const rightCards = document.querySelectorAll("table:last-of-type .card");
 
   let firstCard = null;
   let lock = false;
+
+  /* -------------------------
+     PROGRESS BAR VARIABLES
+  ------------------------- */
+  let progressCurrent = 0;
+  const progressBar = document.getElementById("progress");
+
+  function updateProgress(value) {
+      progressBar.style.width = value + "%";
+  }
+
+  /* ------------------------- */
 
   function resetWrong(card1, card2) {
     setTimeout(() => {
@@ -62,6 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function markMatched(card1, card2) {
+
     card1.classList.add("matched");
     card2.classList.add("matched");
     card1.classList.remove("selected");
@@ -69,17 +82,29 @@ document.addEventListener("DOMContentLoaded", () => {
     firstCard = null;
     lock = false;
 
+    /* -------------------------------
+       UPDATE PROGRESS
+       total pairs = 3
+    ------------------------------- */
+    const matchedPairs = document.querySelectorAll(".card.matched").length / 2;
+
+    if (matchedPairs === 1) progressCurrent = 33;   // 1st match
+    if (matchedPairs === 2) progressCurrent = 66;   // 2nd match
+    if (matchedPairs === 3) progressCurrent = 100;  // all matched
+
+    updateProgress(progressCurrent);
+    /* ------------------------------- */
+
     // AUTO CHECK: all matched?
     const totalCards = document.querySelectorAll(".card").length;
     const matchedCards = document.querySelectorAll(".card.matched").length;
 
     if (matchedCards === totalCards) {
-        const score = matchedCards / 2; // each pair = 2 cards
+        const score = matchedCards / 2;
         localStorage.setItem("quizScore", score);
 
-        // Delay so user sees last match
         setTimeout(() => {
-            window.location.href = "your_score.html";
+            window.location.href = "../matching-type/your score.html";
         }, 800);
     }
   }
@@ -93,12 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    if (firstCard.side === side) return; // prevent same side selection
+    if (firstCard.side === side) return;
 
     const first = firstCard.element;
     card.classList.add("selected");
 
     if (first.dataset.match === card.dataset.match) {
+
       first.classList.add("correct");
       card.classList.add("correct");
 
@@ -116,10 +142,17 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  leftCards.forEach(card => card.addEventListener("click", () => handleCardClick(card, "left")));
-  rightCards.forEach(card => card.addEventListener("click", () => handleCardClick(card, "right")));
+  leftCards.forEach(card =>
+    card.addEventListener("click", () => handleCardClick(card, "left"))
+  );
+
+  rightCards.forEach(card =>
+    card.addEventListener("click", () => handleCardClick(card, "right"))
+  );
+
 });
 </script>
+
 
 </body>
 </html>

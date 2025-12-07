@@ -73,3 +73,41 @@ document.addEventListener("DOMContentLoaded", () => {
   leftCards.forEach(card => card.addEventListener("click", () => handleCardClick(card, "left")));
   rightCards.forEach(card => card.addEventListener("click", () => handleCardClick(card, "right")));
 });
+
+
+
+function markMatched(card1, card2) {
+    card1.classList.add("matched");
+    card2.classList.add("matched");
+    card1.classList.remove("selected");
+    card2.classList.remove("selected");
+    firstCard = null;
+    lock = false;
+
+    // --- PROGRESS UPDATE LOGIC ---
+    const matchedPairs = document.querySelectorAll(".card.matched").length / 2;
+
+    if (matchedPairs === 1) {
+        progressCurrent = 50;    // FIRST MATCH → 50%
+    }
+
+    if (matchedPairs === 3) {
+        progressCurrent = 100;   // ALL MATCHED → 100%
+    }
+
+    updateProgress(progressCurrent);
+    // ----------------------------------
+
+    // AUTO CHECK: all matched?
+    const totalCards = document.querySelectorAll(".card").length;
+    const matchedCards = document.querySelectorAll(".card.matched").length;
+
+    if (matchedCards === totalCards) {
+        const score = matchedCards / 2; // each pair = 2 cards
+        localStorage.setItem("quizScore", score);
+
+        setTimeout(() => {
+            window.location.href = "../matching-type/your score.html";
+        }, 800);
+    }
+}
