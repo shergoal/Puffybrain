@@ -1,178 +1,742 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Public Decks</title>
-    <link rel="stylesheet" href="public deck.css" />
-               <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-            <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
-            <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard Study App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Search Bar */
+        .search-container {
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1.5rem;
+            border-radius: 9999px;
+            border: 1px solid #d1d5db;
+            font-size: 1rem;
+            color: #6b7280;
+            outline: none;
+        }
+
+        .search-input:focus {
+            border-color: #9ca3af;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Deck Grid */
+        .deck-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .deck-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: box-shadow 0.3s;
+        }
+
+        .deck-card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .deck-header {
+            height: 6rem;
+        }
+
+        .deck-body {
+            padding: 1.5rem;
+        }
+
+        .deck-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .deck-count {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        /* Color Classes */
+        .bg-purple { background-color: #d8b4fe; }
+        .bg-red { background-color: #fca5a5; }
+        .bg-yellow { background-color: #fcd34d; }
+        .bg-green { background-color: #86efac; }
+        .bg-blue { background-color: #93c5fd; }
+
+        /* Study View */
+        .study-container {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f9fafb;
+        }
+
+        .sidebar {
+            width: 24rem;
+            background: white;
+            padding: 2rem;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .back-button {
+            background: none;
+            border: none;
+            color: #a855f7;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            padding: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-button:hover {
+            color: #9333ea;
+        }
+
+        .deck-info {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .deck-info-header {
+            height: 6rem;
+            border-radius: 1.5rem 1.5rem 0 0;
+            margin: -2rem -2rem 1.5rem -2rem;
+        }
+
+        .deck-info-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .deck-info-count {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.75rem;
+        }
+
+        .description {
+            font-size: 0.875rem;
+            color: #6b7280;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .creator {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .creator-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .avatar {
+            width: 3rem;
+            height: 3rem;
+            background-color: #d1d5db;
+            border-radius: 50%;
+        }
+
+        .creator-name {
+            font-weight: 500;
+            color: #1f2937;
+        }
+
+        .visit-button {
+            padding: 0.5rem 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 9999px;
+            background: white;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .visit-button:hover {
+            background-color: #f9fafb;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .cards-container {
+            max-width: 64rem;
+            margin: 0 auto;
+        }
+
+        .cards-header {
+            background-color: #d8b4fe;
+            border-radius: 1.5rem 1.5rem 0 0;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6b7280;
+            cursor: pointer;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid transparent;
+        }
+
+        .tab.active {
+            color: #1f2937;
+            border-bottom-color: #1f2937;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .action-button {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            border: none;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .action-button:hover {
+            background-color: #f9fafb;
+        }
+
+        .cards-list {
+            background: white;
+            border-radius: 0 0 1.5rem 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .flashcard {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 1.5rem 1rem;
+            cursor: pointer;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+
+        .flashcard:last-child {
+            border-bottom: none;
+        }
+
+        .flashcard:hover {
+            background-color: #f9fafb;
+        }
+
+        .flashcard-question {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .flashcard-answer {
+            color: #374151;
+            margin-bottom: 0.5rem;
+        }
+
+        .flashcard-hint {
+            font-size: 0.875rem;
+            color: #9ca3af;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Profile View */
+        .profile-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .id-card {
+            border: 3px solid #3b82f6;
+            border-radius: 1rem;
+            padding: 2rem;
+            background: white;
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .id-card-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .id-photo {
+            width: 150px;
+            height: 150px;
+            background: #d1d5db;
+            border-radius: 1rem;
+        }
+
+        .barcode {
+            width: 100px;
+            height: 40px;
+            background: repeating-linear-gradient(
+                90deg,
+                #000 0px,
+                #000 2px,
+                #fff 2px,
+                #fff 4px
+            );
+        }
+
+        .id-card-right {
+            flex: 1;
+        }
+
+        .id-card-title {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px dashed #d1d5db;
+            padding-bottom: 1rem;
+        }
+
+        .id-row {
+            display: flex;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .id-label {
+            font-weight: 600;
+            width: 150px;
+        }
+
+        .id-value {
+            flex: 1;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.8rem;
+        }
+
+        .public-decks-section {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+        }
+
+        .public-decks-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+        }
+
+        .profile-deck-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .profile-deck-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .profile-deck-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-deck-header {
+            height: 140px;
+            position: relative;
+        }
+
+        .profile-deck-tab {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 60px;
+            height: 40px;
+            border-radius: 8px 8px 0 0;
+            opacity: 0.8;
+        }
+
+        .profile-deck-body {
+            padding: 1.5rem;
+        }
+
+        .profile-deck-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-deck-count {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        svg {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        @media (max-width: 1200px) {
+            .deck-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .deck-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .study-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+            }
+
+            .id-card {
+                flex-direction: column;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div id="root"></div>
 
-<div class="container"> 
-  <div class="grid-container">   
-<div class="header-container">
-    <!-- Search bar in the left -->
-    <form action="#" method="get" class="search-bar">
-        <input type="text" name="search" placeholder="Search your decks">
-        <i class="bx bx-search"></i>    
-    </form>
+    <script>
+        // Data
+        const decks = [
+            { id: 1, title: 'Network Fundamental', cards: 17, color: 'bg-purple' },
+            { id: 2, title: 'System Analysis And Design', cards: 180, color: 'bg-red' },
+            { id: 3, title: 'Arduino Uno Components', cards: 27, color: 'bg-yellow' },
+            { id: 4, title: 'Social Engineering', cards: 33, color: 'bg-purple' },
+            { id: 5, title: 'Information Assurance', cards: 18, color: 'bg-green' },
+            { id: 6, title: 'Information Security', cards: 26, color: 'bg-yellow' },
+            { id: 7, title: 'Introduction to Robotics', cards: 50, color: 'bg-purple' },
+            { id: 8, title: 'Computer Network Topologies', cards: 37, color: 'bg-blue' },
+            { id: 9, title: 'Types of Computer Networks', cards: 29, color: 'bg-purple' },
+            { id: 10, title: 'Emerging Technology', cards: 41, color: 'bg-red' },
+            { id: 11, title: 'System Integration', cards: 69, color: 'bg-blue' },
+            { id: 12, title: 'MySQL Subquery', cards: 33, color: 'bg-green' },
+        ];
 
+        const flashcards = {
+            1: [
+                {
+                    id: 1,
+                    question: 'What is the primary purpose of a "router" in a home network?',
+                    answer: 'To forward data between different networks, such as your home network and the internet.'
+                },
+                {
+                    id: 2,
+                    question: 'Which network device is used to amplify a Wi-Fi signal to extend...',
+                    answer: 'A Wi-Fi Repeater/Extender'
+                },
+                {
+                    id: 3,
+                    question: 'What does the acronym "LAN" commonly stand for?',
+                    answer: 'Local Area Network'
+                }
+            ],
+            2: [
+                { id: 1, question: 'What is System Analysis?', answer: 'The process of studying a system to understand its components and how they interact.' }
+            ],
+            3: [
+                { id: 1, question: 'What is the main microcontroller on Arduino Uno?', answer: 'ATmega328P' }
+            ]
+        };
 
-      <!-- Profile section on the right -->
-      <div class="profile-wrapper">
+        const userProfile = {
+            username: 'ashh',
+            year: '2nd Year',
+            school: 'Cavite State University Imus Campus',
+            signature: 'Ashh',
+            publicDecks: [
+                { id: 1, title: 'Network Fundamental', cards: 20, color: 'bg-purple' },
+                { id: 2, title: 'Data structure', cards: 20, color: 'bg-red' }
+            ]
+        };
 
-        <div class="dp-container">
-          <img src="../images/temporary profile.jpg" alt="Profile Picture" class="profile-pic">
-        </div>
+        // State
+        let currentView = 'browser';
+        let selectedDeck = null;
+        let flippedCards = new Set();
 
-        <div class="user-info">
-          <p style="font-size: 20px; font-weight: normal; ">@meiko</p>
-        </div>
+        // Render functions
+        function renderBrowser() {
+            return `
+                <div class="container">
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" class="search-input" placeholder="Type a subject to explore public decks">
+                            <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="deck-grid">
+                        ${decks.map(deck => `
+                            <div class="deck-card" onclick="openDeck(${deck.id})">
+                                <div class="deck-header ${deck.color}"></div>
+                                <div class="deck-body">
+                                    <h3 class="deck-title">${deck.title}</h3>
+                                    <p class="deck-count">${deck.cards} cards</p>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            `;
+        }
 
-<div class="dropdown">
-  <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
-    <i class="bx bx-chevron-down"></i>
-  </button>
+        function renderStudy() {
+            const cards = flashcards[selectedDeck.id] || [];
+            return `
+                <div class="study-container">
+                    <div class="sidebar">
+                        <button class="back-button" onclick="goBack()">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="19" y1="12" x2="5" y2="12"></line>
+                                <polyline points="12 19 5 12 12 5"></polyline>
+                            </svg>
+                        </button>
+                        <div class="deck-info">
+                            <div class="deck-info-header ${selectedDeck.color}"></div>
+                            <h2 class="deck-info-title">${selectedDeck.title}</h2>
+                            <p class="deck-info-count">${cards.length} cards</p>
+                            <div class="section-title">Description</div>
+                            <p class="description">encompass the basic concepts, components, and protocols that enable communication between devices in a network.</p>
+                            <div class="section-title">Created by</div>
+                            <div class="creator">
+                                <div class="creator-info">
+                                    <div class="avatar"></div>
+                                    <span class="creator-name">@ashh</span>
+                                </div>
+                                <button class="visit-button" onclick="showProfile()">Visit Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="main-content">
+                        <div class="cards-container">
+                            <div class="cards-header">
+                                <div class="tabs">
+                                    <button class="tab active">All Cards</button>
+                                    <button class="tab">Not Memorized</button>
+                                    <button class="tab">Memorized</button>
+                                </div>
+                                <div class="action-buttons">
+                                    <button class="action-button">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                            <line x1="12" y1="5" x2="12" y2="19"></line>
+                                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                                        </svg>
+                                        Add Cards
+                                    </button>
+                                    <button class="action-button">Practice</button>
+                                </div>
+                            </div>
+                            <div class="cards-list">
+                                ${cards.map(card => `
+                                    <div class="flashcard" onclick="toggleCard(${card.id})">
+                                        <h3 class="flashcard-question">${card.question}</h3>
+                                        <p class="flashcard-answer ${flippedCards.has(card.id) ? '' : 'hidden'}">${card.answer}</p>
+                                        <p class="flashcard-hint">${flippedCards.has(card.id) ? 'Click to hide answer' : 'Click to show answer'}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-  <div class="dropdown-content" id="dropdownMenu">
-    <a href="#">
-      <i class="bx bx-cog"></i>
-      <span>Settings</span>
-    </a>
+        function renderProfile() {
+            return `
+                <div class="profile-container">
+                    <button class="back-button" onclick="goBack()" style="margin-bottom: 2rem;">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                    </button>
+                    
+                    <div class="id-card">
+                        <div class="id-card-left">
+                            <div class="id-photo"></div>
+                            <div class="barcode"></div>
+                        </div>
+                        <div class="id-card-right">
+                            <h1 class="id-card-title">Student ID Card</h1>
+                            <div class="id-row">
+                                <span class="id-label">Username:</span>
+                                <span class="id-value">${userProfile.username}</span>
+                                <span class="id-label" style="margin-left: 3rem;">Year:</span>
+                                <span class="id-value">${userProfile.year}</span>
+                            </div>
+                            <div class="id-row">
+                                <span class="id-label">School:</span>
+                                <span class="id-value">${userProfile.school}</span>
+                            </div>
+                            <div class="id-row">
+                                <span class="id-label">Signature:</span>
+                                <span class="id-value signature">${userProfile.signature}</span>
+                            </div>
+                        </div>
+                    </div>
 
-    <a href="#">
-      <i class="bx bx-help-circle"></i>
-      <span>FAQs</span>
-    </a>
+                    <div class="public-decks-section">
+                        <h2 class="public-decks-title">Public Decks</h2>
+                        <div class="profile-deck-grid">
+                            ${userProfile.publicDecks.map(deck => `
+                                <div class="profile-deck-card" onclick="openDeck(${deck.id})">
+                                    <div class="profile-deck-header ${deck.color}">
+                                        <div class="profile-deck-tab ${deck.color}"></div>
+                                    </div>
+                                    <div class="profile-deck-body">
+                                        <h3 class="profile-deck-title">${deck.title}</h3>
+                                        <p class="profile-deck-count">${deck.cards} cards</p>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
 
-    <a href="logout.php">
-      <i class="bx bx-log-out"></i>
-      <span>Logout</span>
-    </a>
-  </div>
-</div>
-
-      </div>
-    </div>
-
-<aside class="sidebar">
-
-  <div>
-      <div class="logo">
-          <img src="../images/logo.png" alt="Logo">
-      </div>
-          <p class="my-decks">Menu</p>
-
-      <nav class="menu">
-          <ul class="sidebar-list">
-              <li class="sidebar-list-item">
-                  <a href="sellerdashboard.php" class="menu-item">
-                      <i class="bx bx-home"></i>
-                      <span>Home</span>
-                  </a>
-              </li>
-
-              <li class="sidebar-list-item">
-                  <a href="sellershop.php" class="menu-item">
-                      <i class="bx bx-book"></i>
-                      <span>Decks</span>
-                  </a>
-              </li>
-
-              <li class="sidebar-list-item">
-                  <a href="sellerproductss.php" class="menu-item active">
-                      <i class="bx bx-folder"></i>
-                      <span>Public Decks</span>
-                  </a>
-              </li>
-          </ul>
-      </nav>
-
-      <nav class="mydecks">
-          <p class="my-decks">My Decks</p>
-          <ul class="sidebar-list">
-              <li class="sidebar-list-item">
-                  <a href="">
-                      <i class="bx bx-book"></i>
-                      <span>My Deck 1</span>
-                  </a>
-              </li>
-              <li class="sidebar-list-item">
-                  <a href="">
-                      <i class="bx bx-book"></i>
-                      <span>My Deck 2</span>
-                  </a>
-              </li>
-          </ul>
-      </nav>
-  </div>
-
-  <!-- Bottom logout -->
-  <nav class="logout">
-      <ul class="sidebar-list">
-          <li class="sidebar-list-item">
-              <a href="logout.php" class="menu-item">
-                  <i class="bx bx-log-out"></i>
-                  <span>Logout</span>
-              </a>
-          </li>
-      </ul>
-  </nav>
-
-</aside>
-    
-    <main class="main">
-        <div class="subject-search">
-            <input type="text" placeholder="Type a subject to explore public decks" />
-            <button></button>
-        </div>
-
-
-  <section class="cards">
-    <a href="network-fundamental.html" class="card purple"><h4>Network Fundamental</h4><p>17 cards</p></a>
-    <a href="system-analysis.html" class="card red"><h4>System Analysis And Design</h4><p>180 cards</p></a>
-    <a href="arduino-uno.html" class="card yellow"><h4>Arduino Uno Components</h4><p>27 cards</p></a>
-    <a href="social-engineering.html" class="card purple"><h4>Social Engineering</h4><p>33 cards</p></a>
-    <a href="information-assurance.html" class="card green"><h4>Information Assurance</h4><p>18 cards</p></a>
-    <a href="information-security.html" class="card yellow"><h4>Information Security</h4><p>26 cards</p></a>
-    <a href="robotics.html" class="card purple"><h4>Introduction to Robotics</h4><p>50 cards</p></a>
-    <a href="network-topologies.html" class="card blue"><h4>Computer Network Topologies</h4><p>37 cards</p></a>
-    <a href="types-of-networks.html" class="card purple"><h4>Types of Computer Networks</h4><p>29 cards</p></a>
-    <a href="emerging-tech.html" class="card red"><h4>Emerging Technology</h4><p>41 cards</p></a>
-    <a href="system-integration.html" class="card blue"><h4>System Integration</h4><p>69 cards</p></a>
-    <a href="mysql-subquery.html" class="card green"><h4>MySQL Subquery</h4><p>33 cards</p></a>
-</section>
-
-    </main>
-</div>
-
-<script>
-function toggleSidebar() {
-    document.querySelector('.sidebar').classList.toggle('open');
-}
-</script>
-
-            <script>
-                function toggleDropdown() {
-                const menu = document.getElementById("dropdownMenu");
-                menu.classList.toggle("show");
+        function render() {
+            const root = document.getElementById('root');
+            if (currentView === 'browser') {
+                root.innerHTML = renderBrowser();
+            } else if (currentView === 'study') {
+                root.innerHTML = renderStudy();
+            } else if (currentView === 'profile') {
+                root.innerHTML = renderProfile();
             }
+        }
 
-                document.addEventListener("click", function(e) {
-                const dropdown = document.querySelector(".dropdown");
-    
-            if (!dropdown.contains(e.target)) {
-                document.getElementById("dropdownMenu").classList.remove("show");
+        // Event handlers
+        function openDeck(deckId) {
+            selectedDeck = decks.find(d => d.id === deckId);
+            currentView = 'study';
+            flippedCards = new Set();
+            render();
+        }
+
+        function goBack() {
+            if (currentView === 'profile') {
+                currentView = 'browser';
+            } else {
+                currentView = 'browser';
             }
-            });
-            </script>
+            selectedDeck = null;
+            render();
+        }
 
+        function toggleCard(cardId) {
+            if (flippedCards.has(cardId)) {
+                flippedCards.delete(cardId);
+            } else {
+                flippedCards.add(cardId);
+            }
+            render();
+        }
+
+        function showProfile() {
+            currentView = 'profile';
+            render();
+        }
+
+        // Initial render
+        render();
+    </script>
 </body>
 </html>

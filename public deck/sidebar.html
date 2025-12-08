@@ -1,0 +1,115 @@
+<div class="container"> 
+  <div class="grid-container">   
+<div class="header-container">
+    <!-- Search bar in the left -->
+    <form action="#" method="get" class="search-bar">
+        <input type="text" name="search" placeholder="Search your decks">
+        <i class="bx bx-search"></i>    
+    </form>
+<link rel="stylesheet" href="sidebar.css"> <!-- your CSS file -->
+<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'> <!-- icons -->
+
+
+
+      <!-- Profile section on the right -->
+      <div class="profile-wrapper">
+
+        <div class="dp-container">
+          <img src="images/temporary profile.jpg" alt="Profile Picture" class="profile-pic">
+        </div>
+
+        <div class="user-info">
+          <p style="font-size: 20px; font-weight: normal; ">@meiko</p>
+        </div>
+
+<div class="dropdown">
+  <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
+    <i class="bx bx-chevron-down"></i>
+  </button>
+
+  <div class="dropdown-content" id="dropdownMenu">
+    <a href="#">
+      <i class="bx bx-cog"></i>
+      <span>Settings</span>
+    </a>
+
+    <a href="#">
+      <i class="bx bx-help-circle"></i>
+      <span>FAQs</span>
+    </a>
+
+    <a href="logout.php">
+      <i class="bx bx-log-out"></i>
+      <span>Logout</span>
+    </a>
+  </div>
+</div>
+
+      </div>
+    </div>
+
+<aside class="sidebar">
+
+  <div>
+      <div class="logo">
+          <img src=" C:\Users\jerico\OneDrive\Hình ảnh\Downloads\logo.png"Logo">
+      </div>
+          <p class="my-decks">Menu</p>
+
+      <nav class="menu">
+          <ul class="sidebar-list">
+              <li class="sidebar-list-item">
+                  <a href="sellerdashboard.php" class="menu-item">
+                      <i class="bx bx-home"></i>
+                      <span>Home</span>
+                  </a>
+              </li>
+
+              <li class="sidebar-list-item">
+                  <a href="sellershop.php" class="menu-item">
+                      <i class="bx bx-book"></i>
+                      <span>Decks</span>
+                  </a>
+              </li>
+
+              <li class="sidebar-list-item">
+                  <a href="sellerproductss.php" class="menu-item active">
+                      <i class="bx bx-folder"></i>
+                      <span>Public Decks</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+
+      <nav class="mydecks">
+          <p class="my-decks">My Decks</p>
+          <ul class="sidebar-list">
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>My Deck 1</span>
+                  </a>
+              </li>
+              <li class="sidebar-list-item">
+                  <a href="">
+                      <i class="bx bx-book"></i>
+                      <span>My Deck 2</span>
+                  </a>
+              </li>
+          </ul>
+      </nav>
+  </div>
+
+  <!-- Bottom logout -->
+  <nav class="logout">
+      <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+              <a href="logout.php" class="menu-item">
+                  <i class="bx bx-log-out"></i>
+                  <span>Logout</span>
+              </a>
+          </li>
+      </ul>
+  </nav>
+
+</aside>
