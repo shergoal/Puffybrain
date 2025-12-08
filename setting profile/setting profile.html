@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 text-white p-4">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex-1 max-w-2xl">
+                <div class="relative">
+                    <input
+                        type="text"
+                        placeholder="Search your deck title"
+                        class="w-full px-6 py-3 pr-12 rounded-full bg-white text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    />
+                    <svg class="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 ml-8">
+                <div class="w-12 h-12 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden">
+                    <svg class="w-7 h-7 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <span class="text-lg">@meiko</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto p-8">
+        <h1 class="text-4xl font-bold mb-8 text-gray-900">Edit Profile</h1>
+
+        <div class="bg-purple-200 rounded-3xl p-1 border-4 border-dashed border-purple-400">
+            <div class="bg-purple-200 rounded-3xl p-6">
+                <!-- Tabs -->
+                <div class="flex gap-2 mb-0">
+                    <button
+                        id="personalTab"
+                        onclick="switchTab('personal')"
+                        class="px-8 py-4 rounded-t-3xl font-semibold text-lg transition-colors bg-white text-gray-800 border-t-2 border-x-2 border-gray-300"
+                    >
+                        Personal Information
+                    </button>
+                    <button
+                        id="settingsTab"
+                        onclick="switchTab('settings')"
+                        class="px-8 py-4 rounded-t-3xl font-semibold text-lg transition-colors bg-transparent text-gray-700"
+                    >
+                        Settings
+                    </button>
+                </div>
+
+                <!-- Form Content -->
+                <div class="bg-white rounded-3xl rounded-tl-none p-12">
+                    <!-- Personal Information Tab -->
+                    <div id="personalContent" class="flex gap-16">
+                        <!-- Left Column -->
+                        <div class="flex-1 space-y-8">
+                            <!-- Username -->
+                            <div>
+                                <label class="block text-gray-900 text-xl font-semibold mb-3">
+                                    Username
+                                </label>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    placeholder="Enter your new username"
+                                    class="w-full px-6 py-4 rounded-full bg-gray-50 border-2 border-gray-200 text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent"
+                                />
+                            </div>
+
+                            <!-- Email Address -->
+                            <div>
+                                <label class="block text-gray-900 text-xl font-semibold mb-3">
+                                    Email Address
+                                </label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    value="username@gmail.com"
+                                    class="w-full px-6 py-4 rounded-full bg-gray-50 border-2 border-gray-200 text-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent"
+                                />
+                            </div>
+
+                            <!-- Name of School -->
+                            <div>
+                                <label class="block text-gray-900 text-xl font-semibold mb-3">
+                                    Name of School
+                                </label>
+                                <input
+                                    type="text"
+                                    id="school"
+                                    placeholder="Enter your name of school"
+                                    class="w-full px-6 py-4 rounded-full bg-gray-50 border-2 border-gray-200 text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent"
+                                />
+                            </div>
+
+                            <!-- Year Level -->
+                            <div>
+                                <label class="block text-gray-900 text-xl font-semibold mb-3">
+                                    Year Level
+                                </label>
+                                <input
+                                    type="text"
+                                    id="yearLevel"
+                                    placeholder="Enter your year level"
+                                    class="w-full px-6 py-4 rounded-full bg-gray-50 border-2 border-gray-200 text-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Photo Upload -->
+                        <div class="flex flex-col items-center pt-8">
+                            <label class="cursor-pointer group">
+                                <div id="photoContainer" class="w-56 h-56 rounded-full bg-gray-50 border-4 border-gray-200 flex flex-col items-center justify-center overflow-hidden transition-all group-hover:border-purple-300">
+                                    <div class="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center mb-3">
+                                        <svg class="w-10 h-10 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </div>
+                                    <span class="text-gray-700 font-semibold text-lg">Upload Photo</span>
+                                </div>
+                                <input
+                                    type="file"
+                                    id="photoUpload"
+                                    accept="image/*"
+                                    onchange="handlePhotoUpload(event)"
+                                    class="hidden"
+                                />
+                            </label>
+                            <p class="text-center text-sm text-gray-500 mt-4">
+                                Recommend ratio 1:1 and file less<br />than 5mb
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div id="settingsContent" class="hidden text-center py-20">
+                        <p class="text-gray-600 text-lg">Settings content goes here</p>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="flex justify-center mt-16">
+                        <button
+                            onclick="handleSaveChanges()"
+                            class="px-16 py-5 bg-gradient-to-r from-purple-400 via-purple-300 to-pink-300 hover:from-purple-500 hover:via-purple-400 hover:to-pink-400 text-white font-bold text-lg rounded-full shadow-lg transition-all transform hover:scale-105"
+                        >
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Tab switching
+        function switchTab(tab) {
+            const personalTab = document.getElementById('personalTab');
+            const settingsTab = document.getElementById('settingsTab');
+            const personalContent = document.getElementById('personalContent');
+            const settingsContent = document.getElementById('settingsContent');
+
+            if (tab === 'personal') {
+                personalTab.className = 'px-8 py-4 rounded-t-3xl font-semibold text-lg transition-colors bg-white text-gray-800 border-t-2 border-x-2 border-gray-300';
+                settingsTab.className = 'px-8 py-4 rounded-t-3xl font-semibold text-lg transition-colors bg-transparent text-gray-700';
+                personalContent.classList.remove('hidden');
+                settingsContent.classList.add('hidden');
+            } else {
+                settingsTab.className = 'px-8 py-4 rounded-t-3xl font-semibold text-lg transition-colors bg-white text-gray-800 border-t-2 border-x-2 border-gray-300';
+                personalTab.className = 'px-8 py-4 rounded-t-3xl font-semibold text-lg transition-colors bg-transparent text-gray-700';
+                settingsContent.classList.remove('hidden');
+                personalContent.classList.add('hidden');
+            }
+        }
+
+        // Photo upload
+        function handlePhotoUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const photoContainer = document.getElementById('photoContainer');
+                    photoContainer.innerHTML = `<img src="${e.target.result}" alt="Profile" class="w-full h-full object-cover" />`;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Save changes
+        function handleSaveChanges() {
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                school: document.getElementById('school').value,
+                yearLevel: document.getElementById('yearLevel').value
+            };
+            
+            console.log('Saving changes:', formData);
+            alert('Changes saved successfully!');
+        }
+    </script>
+</body>
+</html>
