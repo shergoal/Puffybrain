@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    
+    <!-- ============================================ -->
+    <!-- CSS STYLES -->
+    <!-- ============================================ -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: #1f2937;
+            color: white;
+            padding: 1rem;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .search-wrapper {
+            flex: 1;
+            max-width: 42rem;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 0.75rem 3rem 0.75rem 1.5rem;
+            border-radius: 9999px;
+            background-color: white;
+            color: #1f2937;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+
+        .search-input:focus {
+            outline: 2px solid #a78bfa;
+        }
+
+        .search-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #9ca3af;
+            stroke-width: 2;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-left: 2rem;
+        }
+
+        .user-avatar {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 9999px;
+            background-color: #d1d5db;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .avatar-icon {
+            width: 1.75rem;
+            height: 1.75rem;
+            color: #4b5563;
+            stroke-width: 2;
+        }
+
+        .username {
+            font-size: 1.125rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1152px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page-title {
+            font-size: 2.25rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            color: #111827;
+        }
+
+        .form-wrapper {
+            background-color: #e9d5ff;
+            border-radius: 1.5rem;
+            padding: 0.25rem;
+            border: 4px dashed #c084fc;
+        }
+
+        .form-container {
+            background-color: #e9d5ff;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 0;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            border-radius: 1.5rem 1.5rem 0 0;
+            font-weight: 600;
+            font-size: 1.125rem;
+            background-color: transparent;
+            color: #374151;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-active {
+            background-color: white;
+            color: #1f2937;
+            border-top: 2px solid #d1d5db;
+            border-left: 2px solid #d1d5db;
+            border-right: 2px solid #d1d5db;
+        }
+
+        .tab:hover:not(.tab-active) {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Content Box */
+        .content-box {
+            background-color: white;
+            border-radius: 1.5rem;
+            border-top-left-radius: 0;
+            padding: 3rem;
+        }
+
+        .content-grid {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .form-fields {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            display: block;
+            color: #111827;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 1rem 1.5rem;
+            border-radius: 9999px;
+            background-color: #f9fafb;
+            border: 2px solid #e5e7eb;
+            color: #4b5563;
+            font-size: 1rem;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .form-input::placeholder {
+            color: #9ca3af;
+        }
+
+        .form-input:focus {
+            outline: 2px solid #d8b4fe;
+            border-color: transparent;
+        }
+
+        /* Photo Section */
+        .photo-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 2rem;
+        }
+
+        .photo-label {
+            cursor: pointer;
+        }
+
+        .photo-container {
+            width: 14rem;
+            height: 14rem;
+            border-radius: 9999px;
+            background-color: #f9fafb;
+            border: 4px solid #e5e7eb;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .photo-label:hover .photo-container {
+            border-color: #d8b4fe;
+        }
+
+        .photo-icon-wrapper {
+            width: 5rem;
+            height: 5rem;
+            border-radius: 9999px;
+            background-color: #e5e7eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+
+        .photo-icon {
+            width: 2.5rem;
+            height: 2.5rem;
+            color: #9ca3af;
+            stroke-width: 2;
+        }
+
+        .photo-text {
+            color: #374151;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .photo-input {
+            display: none;
+        }
+
+        .photo-hint {
+            text-align: center;
+            font-size: 0.875rem;
+            color: #6b7280;
+            margin-top: 1rem;
+            line-height: 1.5;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Settings Content */
+        .settings-content {
+            display: none;
+            text-align: center;
+            padding: 5rem 0;
+        }
+
+        .settings-text {
+            color: #4b5563;
+            font-size: 1.125rem;
+        }
+
+        /* Save Button */
+        .button-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+        }
+
+        .save-button {
+            padding: 1.25rem 4rem;
+            background: linear-gradient(to right, #c084fc, #d8b4fe, #fbcfe8);
+            color: white;
+            font-weight: bold;
+            font-size: 1.125rem;
+            border-radius: 9999px;
+            border: none;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .save-button:hover {
+            background: linear-gradient(to right, #a855f7, #c084fc, #f9a8d4);
+            transform: scale(1.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-grid {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .user-info {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================ -->
+    <!-- HTML STRUCTURE -->
+    <!-- ============================================ -->
+    
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="search-wrapper">
+                <div class="search-box">
+                    <input
+                        type="text"
+                        placeholder="Search your deck title"
+                        class="search-input"
+                    />
+                    <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" stroke-width="2"></circle>
+                        <path d="m21 21-4.35-4.35" stroke-width="2"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">
+                    <svg class="avatar-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4" stroke-width="2"></circle>
+                    </svg>
+                </div>
+                <span class="username">@meiko</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <h1 class="page-title">Edit Profile</h1>
+
+        <div class="form-wrapper">
+            <div class="form-container">
+                <!-- Tabs -->
+                <div class="tabs">
+                    <button id="personalTab" class="tab tab-active">
+                        Personal Information
+                    </button>
+                    <button id="settingsTab" class="tab">
+                        Settings
+                    </button>
+                </div>
+
+                <!-- Form Content -->
+                <div class="content-box">
+                    <!-- Personal Information Tab -->
+                    <div id="personalContent" class="content-grid">
+                        <!-- Left Column -->
+                        <div class="form-fields">
+                            <!-- Username -->
+                            <div class="form-group">
+                                <label class="form-label">Username</label>
+                                <input
+                                    type="text"
+                                    id="username"
+                                    placeholder="Enter your new username"
+                                    class="form-input"
+                                />
+                            </div>
+
+                            <!-- Email Address -->
+                            <div class="form-group">
+                                <label class="form-label">Email Address</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    value="username@gmail.com"
+                                    class="form-input"
+                                />
+                            </div>
+
+                            <!-- Name of School -->
+                            <div class="form-group">
+                                <label class="form-label">Name of School</label>
+                                <input
+                                    type="text"
+                                    id="school"
+                                    placeholder="Enter your name of school"
+                                    class="form-input"
+                                />
+                            </div>
+
+                            <!-- Year Level -->
+                            <div class="form-group">
+                                <label class="form-label">Year Level</label>
+                                <input
+                                    type="text"
+                                    id="yearLevel"
+                                    placeholder="Enter your year level"
+                                    class="form-input"
+                                />
+                            </div>
+                        </div>
+
+                        <!-- Right Column - Photo Upload -->
+                        <div class="photo-section">
+                            <label class="photo-label">
+                                <div id="photoContainer" class="photo-container">
+                                    <div class="photo-icon-wrapper">
+                                        <svg class="photo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4" stroke-width="2"></circle>
+                                        </svg>
+                                    </div>
+                                    <span class="photo-text">Upload Photo</span>
+                                </div>
+                                <input
+                                    type="file"
+                                    id="photoUpload"
+                                    accept="image/*"
+                                    class="photo-input"
+                                />
+                            </label>
+                            <p class="photo-hint">
+                                Recommend ratio 1:1 and file less<br />than 5mb
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Settings Tab -->
+                    <div id="settingsContent" class="settings-content">
+                        <p class="settings-text">Settings content goes here</p>
+                    </div>
+
+                    <!-- Save Button -->
+                    <div class="button-wrapper">
+                        <button id="saveButton" class="save-button">
+                            Save Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================ -->
+    <!-- JAVASCRIPT -->
+    <!-- ============================================ -->
+    <script>
+        // Get elements
+        const personalTab = document.getElementById('personalTab');
+        const settingsTab = document.getElementById('settingsTab');
+        const personalContent = document.getElementById('personalContent');
+        const settingsContent = document.getElementById('settingsContent');
+        const photoUpload = document.getElementById('photoUpload');
+        const photoContainer = document.getElementById('photoContainer');
+        const saveButton = document.getElementById('saveButton');
+
+        // Tab switching function
+        function switchTab(tab) {
+            if (tab === 'personal') {
+                // Activate Personal Information tab
+                personalTab.classList.add('tab-active');
+                settingsTab.classList.remove('tab-active');
+                personalContent.style.display = 'flex';
+                settingsContent.style.display = 'none';
+            } else {
+                // Activate Settings tab
+                settingsTab.classList.add('tab-active');
+                personalTab.classList.remove('tab-active');
+                settingsContent.style.display = 'block';
+                personalContent.style.display = 'none';
+            }
+        }
+
+        // Add click event listeners to tabs
+        personalTab.addEventListener('click', function() {
+            switchTab('personal');
+        });
+
+        settingsTab.addEventListener('click', function() {
+            switchTab('settings');
+        });
+
+        // Photo upload function
+        photoUpload.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                // Check file size (5MB limit)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File size must be less than 5MB');
+                    event.target.value = '';
+                    return;
+                }
+
+                // Read and display the image
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    photoContainer.innerHTML = '<img src="' + e.target.result + '" alt="Profile Photo" />';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Save changes function
+        saveButton.addEventListener('click', function() {
+            // Get form data
+            const formData = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                school: document.getElementById('school').value,
+                yearLevel: document.getElementById('yearLevel').value
+            };
+            
+            // Log to console (for debugging)
+            console.log('Saving changes:', formData);
+            
+            // Show success message
+            alert('Changes saved successfully!');
+            
+            // Here you can add code to send data to your server
+            // Example:
+            // fetch('/api/save-profile', {
+            //     method: 'POST',
+            //     headers: { 'Content-Type': 'application/json' },
+            //     body: JSON.stringify(formData)
+            // });
+        });
+    </script>
+</body>
+</html>
