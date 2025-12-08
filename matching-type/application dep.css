@@ -5,7 +5,22 @@
   --red-match: #ffaaa3;
   --card-bg: #ffffff;
   --text-color: #111;
+
+    --color-primary: #EBD3FA;
+    --color-secondary: #E3AADD;
+    --color-third: #C8A8E9;
+    --color-fourth: #A993D8;
+    --color-fifth: #C3C7F3;
+    --font-color: #2F2F2F;
+    --card-color1: #C8BBD0;
+    --card-color2: #E0BBD4;
+     --card-color3: #C3C7F3;
+     --card-color4: #90F897;
+    --card-color5: #CF8686;
+     --card-color6: #EECB99;
+     --color-shadow: #DDDDDD;
 }
+
 
 /* ---------- Card states with transitions ---------- */
 
@@ -14,6 +29,7 @@
   outline: 3px solid var(--purple-main);
   background: #f3e7ff;
   transition: background 0.25s ease, outline 0.25s ease;
+  border-color: #000;
 }
 
 /* Correct match (GREEN smooth fade-in) */
@@ -62,6 +78,7 @@
     gap: 40px;
     margin-top: 30px;
     flex-wrap: wrap; /* responsive stacking */
+    
 }
 
 /* Table */
@@ -72,6 +89,7 @@ table {
     background: #fff;
     border-radius: 12px;
     overflow: hidden;
+    
 }
 
 th {
@@ -79,6 +97,7 @@ th {
     color: white;
     padding: 12px;
     font-size: 18px;
+    
 }
 
 td {
@@ -98,6 +117,9 @@ td {
         box-shadow 0.25s ease,
         background-color 0.25s ease,
         opacity 0.4s ease;
+
+    border-radius: 20px;
+    border: 1.5px solid #11111143;
 }
 
 /* Hover */
@@ -120,6 +142,7 @@ body{
   align-items:flex-start;
   padding:18px;
   color:var(--text-color);
+  
 }
 
 /* Lined-paper background */
@@ -138,6 +161,7 @@ body{
   flex-direction:column;
   align-items:center;
   gap:18px;
+
 }
 
 
@@ -192,6 +216,7 @@ body{
   display:flex;
   flex-direction:column;
   align-items:center;
+  
 }
 
 
@@ -203,6 +228,8 @@ body{
   gap:40px;
   justify-content:center;
   padding:10px 24px;
+  
+  
 }
 
 .column{
@@ -246,8 +273,18 @@ body{
   .column{
     padding:0 6px;
   }
-  .course-title{ font-size:22px; }
-  table{ width:100%; }
+  .course-title{ 
+    font-size:22px; 
+    font-family: 'Jersey 15';
+
+  }
+
+  table{ 
+    width:100%; 
+                font-family: 'Jersey 15';
+
+  }
+  
 }
 
 @media (max-width:600px){
