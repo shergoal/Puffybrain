@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Deck Preview</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&family=Qwitcher+Grypen:wght@400;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+<div class="container">
+    <div class="grid-container">
+        <!-- HEADER -->
+        <div class="header-container">
+            <div class="search-wrapper">
+                <input type="text" placeholder="Search...">
+                <i class="bx bx-search"></i>
+            </div>    
+            <div class="profile-wrapper">
+                <div class="dp-container">
+                    <img src="image/temporary profile.jpg" class="profile-pic">
+                </div>
+                <div class="user-info">
+                    <p>@meiko</p>
+                </div>
+                <div class="dropdown">
+                    <button type="button" class="dropdown-btn" onclick="toggleDropdown()">
+                        <i class="bx bx-chevron-down"></i>
+                    </button>
+                    <div class="dropdown-content" id="dropdownMenu">
+                        <a href="signin.php">
+                            <i class="bx bx-log-out"></i>
+                            <span>Logout</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div>
+                <div class="logo">
+                    <img src="images/logo.png" alt="Logo">
+                </div>
+                <p class="my-decks">Menu</p>
+                <nav class="menu">
+                    <ul class="sidebar-list">
+                        <li class="sidebar-list-item">
+                            <a href="sellerdashboard.php" class="menu-item active">
+                                <i class="bx bx-home"></i>
+                                <span>Home</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list-item">
+                            <a href="sellershop.php" class="menu-item">
+                                <i class="bx bx-book"></i>
+                                <span>Decks</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-list-item">
+                            <a href="sellerproductss.php" class="menu-item">
+                                <i class="bx bx-folder"></i>
+                                <span>Public Decks</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <nav class="mydecks">
+                    <p class="my-decks">My Decks</p>
+                    <ul class="sidebar-list">
+                        <li class="sidebar-list-item">
+                            <a href="#"><i class="bx bx-book"></i><span>My Deck 1</span></a>
+                        </li>
+                        <li class="sidebar-list-item">
+                            <a href="#"><i class="bx bx-book"></i><span>My Deck 2</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <nav class="logout">
+                <ul class="sidebar-list">
+                    <li class="sidebar-list-item">
+                        <a href="logout.php" class="menu-item">
+                            <i class="bx bx-log-out"></i>
+                            <span>Logout</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main> 
+            <section class="deck-info-container"> 
+                <div class="deck-wrapper">
+                    <div class="deck-top"></div>
+                    <div class="deck-info">
+                        <h3>Lesson 3 Networking</h3> 
+                        <p>13 cards</p> 
+                        <hr> 
+                        <div class="desc"> 
+                            <p>Description</p>
+                            <p>Focuses on how modern applications are developed and connected through networks using emerging technologies.</p> 
+                            <hr> 
+                        </div>
+                        <div class="creator-info">
+                            <p>Created by you</p>
+                        </div>
+                       
+                       
+                        <div class="status">
+                         <span class="dot"></span>
+                          <span class="label">private</span>
+                       </div>
+
+                    </div>
+                </div>
+            </section> 
+
+            <section class="cards-panel"> 
+                <div class="cards-scroll">
+                    <div class="cards-actions">
+                        <button class="add-cards">Add Cards</button>
+                        <button class="practice">Practice</button>
+                    </div>
+
+                    <!-- Tabs -->
+                    <div class="cards-tabs"> 
+                        <span class="active-tab">All Cards</span> 
+                        <span class="mem">Memorized</span> 
+                        <span class="notmem">Not Memorized</span> 
+                    </div>
+                    <div class="cards-tabs-line"></div>
+
+                    <!-- Cards -->
+                    <div class="cards not-memorized"> 
+                        <p>Which protocol is used to automatically assign IP addresses to devices on a network?</p> 
+                        <hr> 
+                        <p>DCHP</p> 
+                    </div> 
+                    <div class="cards not-memorized"> 
+                        <p>What is the default port number used by HTTP?</p> 
+                        <hr> 
+                        <p>Port 80</p> 
+                    </div> 
+                    <div class="cards not-memorized"> 
+                        <p>Which OSI layer is responsible for routing packets between networks?</p> 
+                        <hr> 
+                        <p>Network layer 3</p> 
+                    </div>
+                     <div class="cards not-memorized"> 
+                        <p>What command displays the IP configuration in Windows?</p> 
+                        <hr> 
+                        <p>ipconfig</p> 
+                    </div> 
+                    <div class="cards not-memorized"> 
+                        <p>Which network topology connects all devices to a central hub or switch?</p> 
+                        <hr> 
+                        <p>Star topology</p> 
+                    </div> 
+                    <div class="cards not-memorized"> 
+                        <p>What protocol is used to send email from a client to a mail server?</p> 
+                        <hr> 
+                        <p>SMTP</p> 
+                    </div>
+                    <div class="cards not-memorized"> 
+                        <p>What is the maximum value of an IPv4 octet?</p> 
+                        <hr> 
+                        <p>255</p> 
+                    </div> 
+                    <div class="cards not-memorized"> 
+                        <p>What is the IPv4 address length in bits?</p> 
+                        <hr> 
+                        <p>32 bits</p> 
+                    </div>
+                     <div class="cards not-memorized"> 
+                        <p>What device forwards data packets based on IP addresses?</p> 
+                        <hr> 
+                        <p>Router</p> 
+                    </div> 
+                    <div class="cards not-memorized"> 
+                        <p>Which command is used to test connectivity between two network devices?</p> 
+                        <hr> 
+                        <p>ping</p> 
+                    </div>
+                   <div class="cards not-memorized"> 
+                        <p>Which protocol translates a domain name into an IP address?</p> 
+                        <hr> 
+                        <p>DNS</p> 
+                    </div> 
+                    <div class="cards not-memorized"> 
+                        <p>Which protocol uses port 443 by default?</p> 
+                        <hr> 
+                        <p>HTTPS</p> 
+                    </div>
+                    <div class="cards not-memorized"> 
+                        <p>Which OSI layer is responsible for encryption and compression?</p> 
+                        <hr> 
+                        <p>Layer 6</p> 
+                    </div> 
+                    
+
+
+
+
+
+
+                    
+                </div>
+            </section> 
+        </main>
+    </div>
+</div>
+
+<script>
+function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.classList.toggle("show");
+}
+
+document.addEventListener("click", function(e) {
+    const dropdown = document.querySelector(".dropdown");
+    if (!dropdown.contains(e.target)) {
+        document.getElementById("dropdownMenu").classList.remove("show");
+    }
+});
+
+// TAB FILTER
+const tabs = document.querySelectorAll(".cards-tabs span");
+const cards = document.querySelectorAll(".cards-panel .cards");
+const cardsPanel = document.querySelector(".cards-panel");
+
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+
+        tabs.forEach(t => t.classList.remove("active-tab"));
+        tab.classList.add("active-tab");
+
+        const type = tab.textContent.trim();
+
+        if (type === "All Cards") {
+            cards.forEach(c => c.style.display = "block");
+            removeEmptyMessage();
+        } 
+        else if (type === "Memorized") {
+            filterCards("memorized", "No card yet!", "images/cute1.png");
+        } 
+        else if (type === "Not Memorized") {
+            filterCards("not-memorized", "No cards left to study!", "images/cute1.png");
+        }
+    });
+});
+
+// Filter cards
+function filterCards(className, emptyText, imagePath) {
+    let count = 0;
+    cards.forEach(card => {
+        if (card.classList.contains(className)) {
+            card.style.display = "block";
+            count++;
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    if (count === 0) {
+        showEmptyMessage(emptyText, imagePath);
+    } else {
+        removeEmptyMessage();
+    }
+}
+
+// Show empty message
+function showEmptyMessage(text, imagePath) {
+    removeEmptyMessage();
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("empty-wrapper");
+    wrapper.innerHTML = `
+        <img src="${imagePath}" class="empty-img">
+        <p class="empty-msg">${text}</p>
+    `;
+    cardsPanel.appendChild(wrapper);
+}
+
+// Remove empty message
+function removeEmptyMessage() {
+    const old = document.querySelector(".empty-wrapper");
+    if (old) old.remove();
+}
+</script>
+</body>
+</html>
