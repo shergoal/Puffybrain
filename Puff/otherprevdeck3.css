@@ -20,24 +20,40 @@ body {
   box-sizing: border-box;
   background-color: #ffffff;
   color: #130b0b;
-     overflow: hidden; 
-       font-family: 'Jersey 15', sans-serif;
-
+  overflow: hidden; 
 }
 
-
 .logo {
+  display: flex;
   text-align: left;
   margin-bottom: 1rem;
   width: 91%;
   height: 80px;
   padding: 10px;
+  position: relative;
 }
 
 .logo img {
-  width: 255px;
-  margin-left:-25px;
+  width: 90px;
+  margin-left: 10px;
   margin-top: -10px;
+}
+
+.logo h3 {
+  margin-right: 15px;
+  font-size: 24px;
+  color: white;
+}
+
+.logo-divider {
+  position: absolute;
+  bottom: 1px; /* 10px from bottom */
+  left: 10px; /* Start from left padding */
+  right: 10px; /* End at right padding */
+  border: none;
+  height: 2px;
+  width: 95%;
+  background-color: white;
 }
 
 .material-icons-outlined {
@@ -285,6 +301,7 @@ margin-left: 10px;
 }
 
 .menu a.active {
+  margin-left: 35px;
   background: white;
   color: #000000;
 }
@@ -326,8 +343,8 @@ margin-left: 10px;
 }
 .logout {
   font-size: 17px;
-  margin-top: 7rem;
-  margin-left: 15px;
+  margin-top: 4rem;
+  margin-left: 8SSpx;
 }
 .logout a {
   display: flex;
@@ -350,6 +367,7 @@ margin-left: 10px;
   background: white;
   color: #000000;
 }
+
   .user-item {
     margin-left: 5px;
     border-top-left-radius: 30px;
