@@ -24,18 +24,20 @@ let current = 0;
 let score = 0;
 
 loadQuestion();
-
 function loadQuestion() {
   const question = questions[current];
 
   document.getElementById("question-text").textContent = question.q;
   updateProgress(current + 1, questions.length);
 
-  const typingBox = document.getElementById("typing-container");
+  const typingContainer = document.getElementById("typing-container");
   const input = document.getElementById("typing-answer");
 
-  typingBox.style.display = "block";
+  // 🔥 SHOW the input
+  typingContainer.style.display = "block";
+
   input.value = "";
+  input.classList.remove("correct", "wrong");
   input.focus();
 
   input.onkeydown = (e) => {
@@ -45,15 +47,31 @@ function loadQuestion() {
   };
 }
 
+
 function checkAnswer(userInput, correctAnswers) {
+  const input = document.getElementById("typing-answer");
   const userAns = userInput.trim().toLowerCase();
 
-  if (correctAnswers.includes(userAns)) {
+  // reset styles
+  input.classList.remove("correct", "wrong");
+
+  const isCorrect = correctAnswers.some(
+    ans => ans.toLowerCase() === userAns
+  );
+
+  if (isCorrect) {
+    input.classList.add("correct");
     score++;
+  } else {
+    input.classList.add("wrong");
   }
 
-  nextQuestion();
+  // short delay so user can see red/green
+  setTimeout(() => {
+    nextQuestion();
+  }, 500); // 500ms = half a second
 }
+
 
 function nextQuestion() {
   current++;

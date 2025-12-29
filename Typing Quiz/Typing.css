@@ -67,7 +67,19 @@ body {
     opacity: 0.8;
     margin: 5px 0;
 }
-
+.placeholder{
+  padding:10px 20px; 
+  width:70%; 
+  height:50px;
+  font-size:18px; 
+  border-radius:15px; 
+  border: 2px solid #3182BC; 
+}
+.placeholder:focus{
+  outline:none;
+  border-color:#3182BC;
+  box-shadow: 0 0 5px #3182BC;
+}
 .start-btn {
     margin-top: 20px;
     width: 60%;

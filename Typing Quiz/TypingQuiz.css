@@ -105,3 +105,26 @@ body::before {
 .typing-container{
   height: 500px;
 }
+#typing-answer {
+  padding: 10px 20px;
+  width: 60%;
+  font-size: 18px;
+  border-radius: 15px;
+  border: 2px solid #505152;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* WRONG answer */
+#typing-answer.wrong {
+  border-color: rgba(106, 4, 4, 0.701); /* 70% opacity */
+  background-color: rgba(255, 16, 16, 0.24); /* 40% opacity */
+
+}
+
+/* CORRECT answer */
+#typing-answer.correct {
+  border-color: #10ff20b3;   /* green – 70% opacity */
+background-color: rgba(42, 180, 52, 0.24); /* green – 24% opacity */
+
+}
