@@ -74,24 +74,6 @@ body {
 
 /* -------------------- HEADER -------------------- */
 
-.header-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  grid-area: header;
-  border: 2px solid #E6E6E6;
-}
-
-.grid-container {
-  display: grid;
-  grid-template-columns: 220px 1fr;
-  grid-template-rows: 70px 1fr;
-  grid-template-areas:
-    "sidebar header"
-    "sidebar main";
-  height: 100vh;
-}
 
 /* -------------------- ICONS -------------------- */
 
@@ -186,7 +168,7 @@ body {
 
 .profile-wrapper {
   position: fixed;
-  top: -6px;
+  top: 40px;
   right: 30px;
   display: flex;
   align-items: center;
@@ -380,8 +362,6 @@ body {
   background: rgb(240, 240, 240);
   border-radius: 10px;
 }
-
-
 
 
 .page-title {
