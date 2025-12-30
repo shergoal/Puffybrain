@@ -51,7 +51,6 @@
     </a>
   </div>
 </div>
-
       </div>
     </div>
 
@@ -96,7 +95,7 @@
           <li class="sidebar-list-item">
               <a href="logout.php" class="menu-item">
                   <i class="bx bx-log-out"></i>
-                  <span>Logout</span>
+                  <span>Logout</span> 
               </a>
           </li>
       </ul>
@@ -194,3 +193,19 @@
 
 </body>
 </html>
+
+
+            <script>
+                function toggleDropdown() {
+                const menu = document.getElementById("dropdownMenu");
+                menu.classList.toggle("show");
+            }
+
+                document.addEventListener("click", function(e) {
+                const dropdown = document.querySelector(".dropdown");
+    
+            if (!dropdown.contains(e.target)) {
+                document.getElementById("dropdownMenu").classList.remove("show");
+            }
+            });
+            </script>
