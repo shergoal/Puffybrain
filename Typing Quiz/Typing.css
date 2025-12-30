@@ -69,16 +69,23 @@ body {
 }
 .placeholder{
   padding:10px 20px; 
-  width:70%; 
+  width:70%;
   height:50px;
   font-size:18px; 
   border-radius:15px; 
   border: 2px solid #3182BC; 
+  font-family: 'nunito', sans-serif;
+  font-weight: 400;
 }
 .placeholder:focus{
   outline:none;
   border-color:#3182BC;
   box-shadow: 0 0 5px #3182BC;
+}
+input::placeholder {
+  color: #000000;
+  font-family: 'nunito', sans-serif;
+  font-weight: 400;
 }
 .start-btn {
     margin-top: 20px;
